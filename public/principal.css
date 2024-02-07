@@ -1,0 +1,252 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Anton', sans-serif;
+  }
+  
+  header {
+    text-align: center;
+    background-color: #000000; 
+    height: 40px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .titulo-img {
+    max-height: 100%; 
+    max-width: 100%; 
+  }
+
+  .second-header {
+    background-color: #ffffff; 
+    padding: 10px; 
+    position: sticky;
+    
+    display: flex;
+    align-items: center;
+    height: 30px;
+    border-bottom: 2px solid #e0e0e0;
+    top: 0;
+    z-index: 100;
+  }
+  
+  .second-header-img {
+    max-height: 30px; 
+    max-width: auto; 
+    margin-right: 0px; 
+  }
+
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+    margin-right: 0px;
+  }
+  
+  .button-img {
+    max-width: 130px; 
+    height: 60px;
+    cursor: pointer;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    top: 100%; 
+    left: 0; 
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+
+  .button-img:hover {
+    transform: scale(1.1); 
+  }
+
+  /* Estilos para la barra de búsqueda */
+  .search-bar {
+    display: flex;
+    max-width: 300px; 
+    height: 20px; 
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    margin-right: 700px; 
+  }
+  
+  .search-bar input[type="text"] {
+    border: none;
+    outline: none;
+    padding: 5px;
+    flex-grow: 1;
+    font-size: 16px;
+  }
+  
+  .search-button {
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #85b31b ;
+  }
+
+  .lideres {
+    max-width: auto; 
+    max-height: 50px; 
+    margin-right: 50px; 
+    position: absolute; 
+    right: 0; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    
+  }
+
+  
+
+  .logo_ofi {
+    max-width: 50px; 
+    max-height: 50px; 
+    margin-left: 40px; 
+    transition: transform 0.3s ease;
+  }
+  
+  .logo_ofi:hover {
+    transform: scale(1.1); 
+  }
+
+
+
+ 
+ 
+
+ 
+ .tecno-img {
+  max-width: 60%; 
+  height: 500px;
+  left: 150px; 
+  margin: 20px;
+  position: absolute;
+  transition: transform 0.3s ease;
+  
+  
+ }
+ .tecno-img:hover {
+  transform: scale(1.1); 
+ }
+
+
+ .robot-img{
+   max-width:100% ;
+   height: 400px;
+   margin-left: 780px;
+   margin-top: 50px;
+  
+ }
+
+
+
+ 
+ .inscripcion-button {
+  background-color: #85b31b; 
+  color: #fff; 
+  font-size: 22px; 
+  padding: 10px 30px; 
+  margin-left: 900px;
+  margin-top: 18px;
+  border: none; 
+  cursor: pointer; 
+  border-radius: 5px; 
+  position: relative; 
+  transition: background-color 0.3s, color 0.3s;
+  border: 1px solid transparent;
+ }
+
+ .inscripcion-button:hover {
+  background-color: #fff; 
+  color: #85b31b; 
+  border-color: #85b31b;
+ }
+
+ .separador {
+  border: none; 
+  border-top: 1px solid rgba(107, 105, 105, 0.3); 
+  margin: 20px 0; 
+  width: 75%;
+  margin: 20px auto;
+  
+ }
+
+
+ .arte-img {
+  max-width: 60%; 
+  height: 500px;
+  left: 150px; 
+  position: absolute;
+  top: 660px; 
+  margin: 20px;
+  transition: transform 0.3s ease;
+ }
+
+ .arte-img:hover {
+  transform: scale(1.1); 
+ }
+
+
+ .descripcion-container {
+  background-color: #ffffff; 
+  padding: 20px; 
+  margin-top: 20px; 
+  border-radius: 5px; 
+  width: 30%;
+  margin-left: 770px; 
+  margin-right: auto; 
+  line-height: 2.0;
+ }
+
+ .descripcion-evento {
+  color: #333;
+  font-size: 18px; 
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ 
+ }
+
+ .button-art {
+  background-color: #85b31b; 
+  color: #fff; 
+  font-size: 22px; 
+  padding: 10px 30px; 
+  
+  border: none; 
+  cursor: pointer; 
+  border-radius: 5px; 
+  
+  transition: background-color 0.3s, color 0.3s;
+  border: 1px solid transparent;
+ }
+
+ .button-art:hover {
+  background-color: #fff; 
+  color: #85b31b; 
+  border-color: #85b31b;
+ }
+ 
+
+
+
+ 

@@ -1,0 +1,75 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev20c class="oracle.dbtools.crest.model.design.storage.oracle.v20c.TableProxyOraclev20c" name="EVENTOS" directorySegmentName="seg_0" id="BB7AA6A5-6276-3BB8-BCE2-081D139B48A1">
+<createdBy>samue</createdBy>
+<createdTime>2023-11-09 16:17:16 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+<schemaObject>4289C62E-7DDF-498F-4A3B-041BD00927C4</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>E7606350-357A-AF4A-3C07-8AA2414BABAD</segment>
+<tableSpace>31A1E04A-8AAD-FDE1-E483-C5AD82A929AC</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="EVENTO_ID" id="146E85DB-6796-70CE-1AF9-8F19B4DA837E">
+<createdBy>samue</createdBy>
+<createdTime>2023-11-09 16:17:18 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="FECHA" id="2894F987-CAB6-C06C-8CC7-C930B1E4CCFE">
+<createdBy>samue</createdBy>
+<createdTime>2023-11-09 16:17:18 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="DESCRIPCION" id="320B57CA-9CDA-5609-F3FC-E22069564AFB">
+<createdBy>samue</createdBy>
+<createdTime>2023-11-09 16:17:18 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="LUGAR" id="599E67D5-00D3-C9D6-4C1E-FA9B0855E838">
+<createdBy>samue</createdBy>
+<createdTime>2023-11-09 16:17:18 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="TITULO" id="B01A1144-7B6E-9089-50EF-C0C238327C3B">
+<createdBy>samue</createdBy>
+<createdTime>2023-11-09 16:17:18 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="HORA" id="EB679D08-AA04-3131-5356-33CE79BD395D">
+<createdBy>samue</createdBy>
+<createdTime>2023-11-09 16:17:18 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<lobStorages>
+<LobStorage class="oracle.dbtools.crest.model.design.storage.oracle.v11g.LobStorageOraclev11g" name="SYS_LOB0000080244C00003$$" id="AEB82E5C-849F-FE3B-9B0E-EBC8540B512F">
+<createdBy>samue</createdBy>
+<createdTime>2023-11-09 16:17:28 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+<cache>NOCACHE</cache>
+<chunk>8192</chunk>
+<column>DESCRIPCION</column>
+<compression>NO</compression>
+<duplication>KEEP_DUPLICATES</duplication>
+<logging>YES</logging>
+<tableSpace>31A1E04A-8AAD-FDE1-E483-C5AD82A929AC</tableSpace>
+<lobStorageType>SECUREFILE</lobStorageType>
+</LobStorage>
+</lobStorages>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="EVENTOS_PK" id="CD6F3184-0617-A92D-3AFE-E4BB17918976">
+<createdBy>samue</createdBy>
+<createdTime>2023-11-09 16:17:25 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+<schemaObject>4289C62E-7DDF-498F-4A3B-041BD00927C4</schemaObject>
+<segment>184F1FC1-A3C4-D248-B026-76752C15606D</segment>
+<tableSpace>31A1E04A-8AAD-FDE1-E483-C5AD82A929AC</tableSpace>
+<indexSegment>184F1FC1-A3C4-D248-B026-76752C15606D</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev20c>

@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TriggerOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TriggerOraclev10g" name="DOC_ID_TRIGGER" directorySegmentName="seg_0" id="754E2FA9-F4E5-AF6F-A2A1-1969C0FBA048">
+<sourceConnName>semillero</sourceConnName>
+<sourceObjSchema>C##ADMI1</sourceObjSchema>
+<sourceObjName>DOC_ID_TRIGGER</sourceObjName>
+<createdBy>samue</createdBy>
+<createdTime>2023-11-10 00:23:14 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+<actions>INSERT</actions>
+<body><![CDATA[BEGIN
+   SELECT doc_id_seq.nextval INTO :new.doc_id FROM dual;
+END;
+]]></body>
+<triggerTime>BEFORE</triggerTime>
+<owner>3DC85A04-6B8F-8597-2DD9-1701FC2E502E</owner>
+<table>202ED21F-2CA9-788A-460D-3F4F3BDC2487</table>
+</TriggerOraclev10g>

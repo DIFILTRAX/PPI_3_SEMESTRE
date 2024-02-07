@@ -1,0 +1,24 @@
+SailsJS
+
+
+para crear una nueva app: es con npx sails new nombre_app
+
+Api: controladores, adaptadores, modelos, politicas y servicios (toda la logica de nuestra app)
+
+
+ASSETS: imagenes, js, styles, favicon robots (toda la parte visual o todos los recursos que utilizara nuestra vistas)
+
+config: locales, 404.js, 500.js...... (toda la parte de configuracion de la app )
+
+node_module: motor de plantillas, grunt, optimist, sails-disk (todos los modulos que utiliza el sails de node.js )
+
+VIEWS: todas las vistas que se crearan e incluso los layaut 
+
+sails lift: es para iniciar el servidor
+
+ejm: de crear una nueva direccion de una ventana propia, es creando en la carpeta view y el archivo tiene que ser con extension archivo.ejs, y en routes.js: ejm: '/vista': { view: 'vista' },
+------------------------------------------------
+Para crear un api, es : comando: sails generate api (ejm user(opcional depende))
+-----------------------------------------------------------------
+para mirar la documentacion: https://sailsjs.com/documentation
+

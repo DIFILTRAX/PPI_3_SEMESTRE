@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="F567D8A1-8D09-E600-5693-F0685FCF1A2E" containerWithKeyObject="2B252C39-23FC-DE40-740F-B700805FC664" localFKIndex="CAE3F8ED-7A16-D851-9962-83D025A95EEC" name="FK_ROL">
+<sourceConnName>semillero</sourceConnName>
+<sourceObjSchema>C##ADMI1</sourceObjSchema>
+<sourceObjName>FK_ROL</sourceObjName>
+<createdBy>samue</createdBy>
+<createdTime>2023-11-09 16:17:27 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+<referredTableLongName>C##ADMI1.ROLES</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>467F2F22-FDE5-A4A2-CA63-EF6FBB9E4389</referredTableID>
+<keyObject>A626DACD-6B39-25BD-5126-9FCD1DBC2F05</keyObject>
+<referredKeyID>A626DACD-6B39-25BD-5126-9FCD1DBC2F05</referredKeyID>
+<mandatory>false</mandatory>
+<refColNames>ID_ROL</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

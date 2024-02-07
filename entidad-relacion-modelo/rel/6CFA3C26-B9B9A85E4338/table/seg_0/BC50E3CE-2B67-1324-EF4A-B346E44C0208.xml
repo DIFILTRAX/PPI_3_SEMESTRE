@@ -1,0 +1,72 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="BC50E3CE-2B67-1324-EF4A-B346E44C0208" name="DOCUMENTACION_HISTORICA">
+<sourceConnName>semillero</sourceConnName>
+<sourceObjSchema>C##ADMI1</sourceObjSchema>
+<sourceObjName>DOCUMENTACION_HISTORICA</sourceObjName>
+<createdBy>samue</createdBy>
+<createdTime>2023-11-09 16:17:16 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="DOC_ID" id="7C507F99-5421-933B-59AB-F49CA404C0E2">
+<sourceConnName>semillero</sourceConnName>
+<sourceObjSchema>DOCUMENTACION_HISTORICA</sourceObjSchema>
+<sourceObjName>DOC_ID</sourceObjName>
+<createdBy>samue</createdBy>
+<createdTime>2023-11-09 16:17:18 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ANIO" id="16A7E3D1-740B-26D3-85DC-CB1EDB111F72">
+<sourceConnName>semillero</sourceConnName>
+<sourceObjSchema>DOCUMENTACION_HISTORICA</sourceObjSchema>
+<sourceObjName>ANIO</sourceObjName>
+<createdBy>samue</createdBy>
+<createdTime>2023-11-09 16:17:18 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CONTENIDO" id="AAE4207C-082B-AEAA-6AB3-D058994E5584">
+<sourceConnName>semillero</sourceConnName>
+<sourceObjSchema>DOCUMENTACION_HISTORICA</sourceObjSchema>
+<sourceObjName>CONTENIDO</sourceObjName>
+<createdBy>samue</createdBy>
+<createdTime>2023-11-09 16:17:18 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT028</logicalDatatype>
+<dataTypeSize>4000</dataTypeSize>
+<ownDataTypeParameters>4000,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="2E7E4CD4-751F-D6A7-ADC3-68C4E68D50F5" schemaObject="4289C62E-7DDF-498F-4A3B-041BD00927C4" name="DOCUMENTACION_HISTORICA_PK">
+<sourceConnName>semillero</sourceConnName>
+<sourceObjSchema>C##ADMI1</sourceObjSchema>
+<sourceObjName>SYS_C008459</sourceObjName>
+<createdBy>samue</createdBy>
+<createdTime>2023-11-09 16:17:24 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7C507F99-5421-933B-59AB-F49CA404C0E2"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

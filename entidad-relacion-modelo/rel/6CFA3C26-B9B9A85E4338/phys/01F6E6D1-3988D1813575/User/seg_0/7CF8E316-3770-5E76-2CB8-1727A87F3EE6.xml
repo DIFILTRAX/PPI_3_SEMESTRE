@@ -1,0 +1,9 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<UserOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.UserOraclev10g" name="C##ADMI1" directorySegmentName="seg_0" id="7CF8E316-3770-5E76-2CB8-1727A87F3EE6">
+<sourceConnName>semillero</sourceConnName>
+<sourceObjName>C##ADMI1</sourceObjName>
+<createdBy>samue</createdBy>
+<createdTime>2023-11-09 16:17:13 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+<schemaObject>4289C62E-7DDF-498F-4A3B-041BD00927C4</schemaObject>
+</UserOraclev10g>

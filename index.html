@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Semillero L.S</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@2.11.6/dist/umd/popper.min.js" integrity="sha384-Gn538b4ldx2vA7nFvKf1RM7okqc+3TYg5n5AVrFg6F5isfI5g7jE3JpLV5zjtnls" crossorigin="anonymous"></script>
+
+
+
+
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  
+
+  
+
+
+</head>
+<style>
+
+  .background-container {
+    background-image: url('juegos_fondo.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 700px;
+  }
+
+  .background-container .container {
+    padding: 20px;
+  }
+
+
+  .navbar-brand.mr-auto {
+    margin-right: 80px; 
+    margin-left: 30px;
+  }
+
+  .nav-link.mr-auto {
+    
+    margin-right: 10px;
+  }
+
+  .nav-item-d {
+
+    margin-right: 60px;
+  }
+
+  .nav-item-c{
+
+    margin-right: 580px;
+  }
+
+  .nav-item-a{
+
+    margin-right: 60px;
+  }
+
+  
+  
+
+
+.navbar {
+  background-color: transparent; 
+  color: rgb(255, 255, 255); 
+}
+
+.navbar-brand {
+
+  color:rgb(255, 255, 255);
+}
+
+
+.navbar .navbar-toggler-icon {
+  color: rgb(255, 255, 255); 
+}
+
+
+.navbar .navbar-nav .nav-link {
+  color: rgb(255, 255, 255); 
+}
+
+
+.navbar .navbar-nav .nav-item.active .nav-link {
+  color: rgb(255, 255, 255); 
+}
+
+.bg-custom {
+    background-color:  #85b31b; 
+}
+
+
+
+
+
+
+
+.mt-custom {
+  margin-top: 100px;
+  
+}
+
+#scroll-container {
+    opacity: 0; 
+    transform: translateY(20px); 
+    transition: opacity 1s ease, transform 1s ease; 
+}
+
+#scroll-container.visible {
+    opacity: 1; 
+    transform: translateY(0); 
+}
+
+ .custom-container {
+    background-color: #f2f2f2; 
+    padding: 20px; 
+  }
+
+  .mt-custom {
+    margin-top: 120px; 
+  }
+
+
+</style>
+
+<body>
+<div class="background-container">  
+  <nav class="navbar navbar-expand-lg bg-custom text-white fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand mr-auto" href="#">LudicaWeb</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item-a">
+            <a class="nav-link active mr-auto" aria-current="page" href="lideres">Lideres</a>
+          </li>
+          <li class="nav-item-d">
+            <a class="nav-link  mr-auto">Ubicacion</a>
+          </li>
+          <li class="nav-item-c">
+            <a class="nav-link  mr-auto phone-link" href="#" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-content="Contacto: +123 456 789">
+              <i class="fas fa-phone"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mr-auto" href="inicio">
+              <i class="fas fa-user"></i> Acceder
+            </a>
+          </li>
+          
+          
+          
+        
+          <li class="nav-item">
+            <a class="nav-link  mr-auto" href="#">
+              Menu
+              <i class="fas fa-bars ml-2"></i>
+            </a>
+          </li>
+          
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="d-flex justify-content-center align-items-center" style="height: 80vh;">
+    <img src="logo_ludicaweb1.png" class="img-fluid" alt="Welcome" style="margin-top: 200px; width: 40%;">
+  </div>
+</div>  
+  
+  <div id="scroll-container" class="container mt-custom hidden">
+    <div class="row">
+      <div class="col-12 text-center" style="font-family: 'Roboto', sans-serif;">
+        <h2>Ser parte del Semillero Ludica y Saber tiene muchas ventajas</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-4 text-center">
+        <i class="fas fa-star"></i> 
+        <h4>Ser parte de una comunidad</h4>
+        <p>solo en nuestra web</p>
+      </div>
+      <div class="col-12 col-md-4 text-center">
+        <i class="fas fa-heart"></i> 
+        <h4>Participacion de Eventos</h4>
+        <p>Juego en equipo y experiencias memorables</p>
+      </div>
+      <div class="col-12 col-md-4 text-center">
+        <i class="fas fa-check"></i> 
+        <h4>Viajes y conferencias</h4>
+        <p>Solo para integrantes y estudiantes del P.C.J.I.C</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row custom-container col-md-12">
+    <div class="col-12 col-md-6 align-self-center">
+      <h2 class="mt-3">Para los amantes de la vida artistica</h2>
+      <p class="mb-0">Explora nuestro semillero donde el arte se mezcla con la diversión,<br>un lugar
+         para nutrir tu creatividad a través<br> de juegos lúdicos y reuniones enriquecedoras. </p>
+    </div>
+    <div class="col-12 col-md-6">
+      <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-wrap="true" data-bs-interval="10000">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <video id="video" controls width="400" height="300" class="mx-auto d-block">
+              <source src="SaveInsta.App - 3190493266805693643_7307584300.mp4" type="video/mp4">
+            </video>
+          </div>
+          
+          <div class="carousel-item">
+            <img src="juego-cooperativo.jpg" class="d-block w-100" alt="Imagen 2" width="400" height="300">
+          </div>
+          <div class="carousel-item">
+            <img src="semi_1.jpeg" class="d-block w-100" alt="Imagen 3" width="400" height="300">
+          </div>
+          <div class="carousel-item">
+            <img src="semi_2.jpeg" class="d-block w-100" alt="Imagen 3" width="400" height="300">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="scroll-container1" class="d-flex justify-content-center align-items-center" style="min-height: 100vh">
+    <div class="container mt-4 text-center">
+      <div class="row">
+        <div class="col-md-6">
+          <p>Somos la nueva generación del conocimiento y la diversión.<br> 
+            Como un semillero en constante crecimiento<br> bajo la tutela de la profesora 
+            Doris Elena Salazar Hernández,<br> hemos nacido con un objetivo claro:<br> fomentar la 
+            investigación formativa y la lúdica.</p>
+        </div>
+        <div class="col-md-6">
+          <p>Estamos aquí para desafiar el statu quo académico,<br> incentivando la curiosidad y la 
+            creatividad.<br> Acompáñanos en un viaje donde el saber<br> se combina con la diversión, y 
+            donde nuestras<br> ideas y proyectos brillan en el mundo<br> de la lúdica y la recreación.</p>
+            <h5>welcome to the Students</h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <img src="doris.jpg" alt="Imagen" class="img-fluid">
+        </div>
+        <div class="col-md-6 text-center">
+          <h4>Nos inspiramos en el<br> Entorno para Forjar<br> Experiencias Únicas</h4>
+          <p>Somos un grupo diverso de estudiantes,<br> graduados y docentes<br> unidos por el deseo de explorar<br>
+            nuevas formas de conectarnos<br> con el mundo que nos rodea.</p>
+          <div class="separador"></div>
+           <p>Nuestra labor es transformar la experiencia<br> educativa y de investigación, adoptando una<br>
+            mentalidad innovadora.</p>
+            <div class="separador1"></div>
+            
+            <p>Exploramos nuevas perspectivas<br> y enfoques en la investigación formativa<br> relacionada con la Lúdica y 
+              la Recreación.</p>
+            <div class="separador2"></div>
+            
+            <p>Estamos aquí para cambiar la<br> forma de vivir para siempre.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mt-custom d-flex justify-content-center align-items-center">
+    <div class="row">
+      
+      <div class="col-md-6">
+        <h6 class="display-3">Tejiendo sueños<br>y conocimiento:<br>La aventura comienza aquí.</p>
+        <p style="font-size: 23px;">Respetamos la naturaleza y los orígenes.<br> Abrazamos 
+          lo local con una mentalidad<br> global.</p>   
+      </div>
+    
+      <div class="col-md-6">
+        <video id="video" controls width="500" height="600" class="mx-auto d-block">
+          <source src="VID-20231013-WA0000.mp4" type="video/mp4">
+        </video>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+
+  
+  
+
+  <script>
+    
+    let containerVisible = false;
+  
+    // Función para manejar el scroll
+    function handleScroll() {
+      const scrollContainer = document.getElementById("scroll-container");
+      const scrollTrigger = window.innerHeight * 0.8; 
+  
+      if (window.scrollY > scrollContainer.offsetTop - scrollTrigger && !containerVisible) {
+        scrollContainer.classList.add("visible");
+        containerVisible = true;
+      } else if (window.scrollY <= scrollContainer.offsetTop - scrollTrigger && containerVisible) {
+        scrollContainer.classList.remove("visible");
+        containerVisible = false;
+      }
+    }
+  
+
+    window.addEventListener("scroll", handleScroll);
+  </script>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+
+      const carouselElement = document.querySelector('#carouselExampleIndicators');
+    
+ 
+      const carousel = new bootstrap.Carousel(carouselElement, {
+        interval: 2000,
+        wrap: true 
+      });
+    });
+  </script>
+
+  
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+  
+</body>
+</html>

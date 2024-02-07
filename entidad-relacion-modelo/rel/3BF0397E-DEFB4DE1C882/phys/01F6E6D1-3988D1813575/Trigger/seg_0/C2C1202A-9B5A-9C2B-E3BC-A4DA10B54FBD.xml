@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TriggerOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TriggerOraclev10g" name="EVENTOS_TRIGGER" directorySegmentName="seg_0" id="C2C1202A-9B5A-9C2B-E3BC-A4DA10B54FBD">
+<sourceConnName>semillero</sourceConnName>
+<sourceObjSchema>C##ADMI1</sourceObjSchema>
+<sourceObjName>EVENTOS_TRIGGER</sourceObjName>
+<createdBy>samue</createdBy>
+<createdTime>2023-11-10 00:23:14 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+<actions>INSERT</actions>
+<body><![CDATA[BEGIN
+    SELECT eventos_seq.nextval INTO :new.evento_id FROM dual;
+END;
+]]></body>
+<triggerTime>BEFORE</triggerTime>
+<owner>3DC85A04-6B8F-8597-2DD9-1701FC2E502E</owner>
+<table>6E264F6F-C941-3062-6645-C6D510398FB9</table>
+</TriggerOraclev10g>

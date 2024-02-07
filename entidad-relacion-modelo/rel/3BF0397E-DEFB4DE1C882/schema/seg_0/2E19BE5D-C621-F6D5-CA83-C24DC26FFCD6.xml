@@ -1,0 +1,6 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SchemaObject class="oracle.dbtools.crest.model.design.relational.SchemaObject" name="C##ADMI1" directorySegmentName="seg_0" id="2E19BE5D-C621-F6D5-CA83-C24DC26FFCD6">
+<createdBy>samue</createdBy>
+<createdTime>2023-11-10 00:23:13 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+</SchemaObject>

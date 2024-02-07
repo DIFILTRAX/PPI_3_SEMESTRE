@@ -1,0 +1,98 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="BACC17DC-9A7D-D812-CAB3-76C84289064F" name="INSCRIPCIONES">
+<sourceConnName>semillero</sourceConnName>
+<sourceObjSchema>C##ADMI1</sourceObjSchema>
+<sourceObjName>INSCRIPCIONES</sourceObjName>
+<createdBy>samue</createdBy>
+<createdTime>2023-11-09 16:17:16 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_INSCRIPCION" id="C9A79023-386D-FB9B-218B-D8352D0CD196">
+<sourceConnName>semillero</sourceConnName>
+<sourceObjSchema>INSCRIPCIONES</sourceObjSchema>
+<sourceObjName>ID_INSCRIPCION</sourceObjName>
+<createdBy>samue</createdBy>
+<createdTime>2023-11-09 16:17:18 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ID_EVENTO" id="DD628160-D0AC-B511-367B-521D2405F231">
+<sourceConnName>semillero</sourceConnName>
+<sourceObjSchema>INSCRIPCIONES</sourceObjSchema>
+<sourceObjName>ID_EVENTO</sourceObjName>
+<createdBy>samue</createdBy>
+<createdTime>2023-11-09 16:17:18 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="33CC46BA-7A76-6822-458A-F22235CCDF6A" referredColumn="146E85DB-6796-70CE-1AF9-8F19B4DA837E"/>
+</associations>
+</Column>
+<Column name="DOCUMENTO_IDENTIDAD" id="07F86414-B5CB-4479-1555-68F57C3EECD7">
+<sourceConnName>semillero</sourceConnName>
+<sourceObjSchema>INSCRIPCIONES</sourceObjSchema>
+<sourceObjName>DOCUMENTO_IDENTIDAD</sourceObjName>
+<createdBy>samue</createdBy>
+<createdTime>2023-11-09 16:17:18 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="02903D98-E44F-520A-8D98-C4DB309BD943" referredColumn="36BC4EFA-89FB-6970-DA6C-D2019E68218D"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="88DBBD81-5A54-5EC4-748B-99E84D8909AA" schemaObject="4289C62E-7DDF-498F-4A3B-041BD00927C4" name="INSCRIPCIONES_PK">
+<sourceConnName>semillero</sourceConnName>
+<sourceObjSchema>C##ADMI1</sourceObjSchema>
+<sourceObjName>SYS_C008578</sourceObjName>
+<createdBy>samue</createdBy>
+<createdTime>2023-11-09 16:17:24 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C9A79023-386D-FB9B-218B-D8352D0CD196"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="8411028B-968F-37E5-64F1-503C920106A7" name="SYS_C008579">
+<createdBy>samue</createdBy>
+<createdTime>2023-11-09 16:17:27 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DD628160-D0AC-B511-367B-521D2405F231"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="028778CE-4F91-8DC0-F663-87333EC4B49F" name="SYS_C008580">
+<createdBy>samue</createdBy>
+<createdTime>2023-11-09 16:17:27 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="07F86414-B5CB-4479-1555-68F57C3EECD7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

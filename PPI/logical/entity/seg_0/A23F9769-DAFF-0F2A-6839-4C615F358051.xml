@@ -1,0 +1,157 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="A23F9769-DAFF-0F2A-6839-4C615F358051" name="USUARIOS">
+<createdBy>sossa</createdBy>
+<createdTime>2023-09-15 16:41:39 UTC</createdTime>
+<ownerDesignName>PPI</ownerDesignName>
+<engineerTo>
+<item key="30239899-291B-EBA6-D0F4-BD00200E4978" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="ID_USER" id="E358A025-DCF1-FCE4-207E-60F4D53BA06A">
+<createdBy>sossa</createdBy>
+<createdTime>2023-09-20 16:34:27 UTC</createdTime>
+<ownerDesignName>PPI</ownerDesignName>
+<engineerTo>
+<item key="30239899-291B-EBA6-D0F4-BD00200E4978" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="NOMBRE" id="E2988214-7AF2-51E1-0F4F-BF3399319C5B">
+<createdBy>sossa</createdBy>
+<createdTime>2023-09-20 16:36:28 UTC</createdTime>
+<ownerDesignName>PPI</ownerDesignName>
+<engineerTo>
+<item key="30239899-291B-EBA6-D0F4-BD00200E4978" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>60</dataTypeSize>
+<ownDataTypeParameters>60,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="FECHA_NACIMIENTO" id="4C255AFB-9BB1-BDC6-7E18-EE6F47228D27">
+<createdBy>sossa</createdBy>
+<createdTime>2023-09-20 16:38:01 UTC</createdTime>
+<ownerDesignName>PPI</ownerDesignName>
+<engineerTo>
+<item key="30239899-291B-EBA6-D0F4-BD00200E4978" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="CORREO_INSTITUCIONAL" id="BEC601F2-3D73-66F1-796F-1DB60904F444">
+<createdBy>sossa</createdBy>
+<createdTime>2023-09-20 16:40:48 UTC</createdTime>
+<ownerDesignName>PPI</ownerDesignName>
+<engineerTo>
+<item key="30239899-291B-EBA6-D0F4-BD00200E4978" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="CONTRASENA" id="22DD3537-4A86-F912-0A85-459819D4124E">
+<createdBy>sossa</createdBy>
+<createdTime>2023-09-20 16:42:42 UTC</createdTime>
+<ownerDesignName>PPI</ownerDesignName>
+<engineerTo>
+<item key="30239899-291B-EBA6-D0F4-BD00200E4978" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>15</dataTypeSize>
+<ownDataTypeParameters>15,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ID_SEXO" id="9987A643-5982-A289-737D-E995F1717BC3">
+<createdBy>sossa</createdBy>
+<createdTime>2023-09-21 16:34:04 UTC</createdTime>
+<generatorID>7B171966-E8F3-2DA7-798B-5482671A8D36</generatorID>
+<ownerDesignName>PPI</ownerDesignName>
+<engineerTo>
+<item key="30239899-291B-EBA6-D0F4-BD00200E4978" value="true"/>
+</engineerTo>
+<referedAttribute>6CFFAC11-F062-F017-0328-F9B787836AD5</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>1</dataTypePrecision>
+<ownDataTypeParameters>,1,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ID_ROL" id="6551C2A6-09A3-942D-1B81-708FD6DF29F2">
+<createdBy>sossa</createdBy>
+<createdTime>2023-09-21 16:37:13 UTC</createdTime>
+<generatorID>912FBB79-A16D-1345-3BA1-72FEDD7D5D96</generatorID>
+<ownerDesignName>PPI</ownerDesignName>
+<engineerTo>
+<item key="30239899-291B-EBA6-D0F4-BD00200E4978" value="true"/>
+</engineerTo>
+<referedAttribute>7A591DF9-3F31-7B0A-CB92-1EA1749D409A</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>1</dataTypePrecision>
+<ownDataTypeParameters>,1,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="OCUPACION1" id="8F5066D0-CA72-263C-6332-AF3976AAB5C3">
+<createdBy>sossa</createdBy>
+<createdTime>2023-09-21 16:59:00 UTC</createdTime>
+<generatorID>EF2BF1A4-4D0F-3B3D-15DF-CCE182778CEE</generatorID>
+<ownerDesignName>PPI</ownerDesignName>
+<engineerTo>
+<item key="30239899-291B-EBA6-D0F4-BD00200E4978" value="true"/>
+</engineerTo>
+<referedAttribute>18186EAD-A315-C28D-869C-CE580311519B</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ID_ROL1" id="FB1ECB5C-5E09-DF16-5C00-052305563742">
+<createdBy>samue</createdBy>
+<createdTime>2023-09-21 22:33:31 UTC</createdTime>
+<generatorID>563CAAB7-425A-8DA2-C897-AB3A25C04FD9</generatorID>
+<ownerDesignName>PPI</ownerDesignName>
+<engineerTo>
+<item key="30239899-291B-EBA6-D0F4-BD00200E4978" value="true"/>
+</engineerTo>
+<referedAttribute>7A591DF9-3F31-7B0A-CB92-1EA1749D409A</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>1</dataTypePrecision>
+<ownDataTypeParameters>,1,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="58F1E486-F30E-670C-5D7F-0967EB770D79" name="USUARIOS PK">
+<createdBy>sossa</createdBy>
+<createdTime>2023-09-20 16:35:29 UTC</createdTime>
+<ownerDesignName>PPI</ownerDesignName>
+<engineerTo>
+<item key="30239899-291B-EBA6-D0F4-BD00200E4978" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>E358A025-DCF1-FCE4-207E-60F4D53BA06A</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

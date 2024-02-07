@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Iniciar Sesión</title>
+  <link rel="stylesheet" type="text/css" href="inicio.css">
+</head>
+<body>
+  <div class="popup-container">
+    <div class="popup">
+      <h1>Iniciar Sesión</h1>
+      <label for="email">Correo Electrónico:</label>
+      <input type="email" id="email" placeholder="Ingresa tu correo electrónico">
+      <label for="contraseña">Contraseña:</label>
+      <input type="password" id="contraseña" placeholder="Ingresa tu contraseña">
+      <button onclick="login()">Iniciar Sesión</button>
+      <button onclick="register()">Registrarse</button>
+      <button onclick="goBack()">Regresar</button>
+      <a href="#" class="forgot-password">¿Olvidaste la contraseña?</a>
+      <span class="close" onclick="closePopup()">×</span>
+    </div>
+  </div>
+
+  <script>
+    function register() {
+      window.location.href = "registro";
+    }
+
+    function goBack() {
+      window.location.href = "index";
+    }
+
+    function login() {
+      const email = document.getElementById('email').value;
+      const contraseña = document.getElementById('contraseña').value;
+
+    
+      const formData = new URLSearchParams();
+      formData.append('correo_electronico', email);
+      formData.append('contrasena', contraseña);
+
+      // Realiza una solicitud POST al servidor Node.js para verificar las credenciales
+      fetch('/inicio', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: formData.toString(),
+      })
+        .then((response) => {
+          if (response.ok) {
+           
+            window.location.href = 'principal';
+          } else {
+           
+            alert('Credenciales no válidas');
+          }
+        })
+        .catch((error) => {
+          console.error('Error al enviar la solicitud POST:', error);
+          alert('Error en el servidor');
+        });
+    }
+
+  </script>
+</body>
+</html>

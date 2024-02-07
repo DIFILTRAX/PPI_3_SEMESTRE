@@ -1,0 +1,85 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev20c class="oracle.dbtools.crest.model.design.storage.oracle.v20c.TableProxyOraclev20c" name="USUARIOS" directorySegmentName="seg_0" id="34582A3A-D733-0B2B-F4CE-772C5E71A068">
+<createdBy>samue</createdBy>
+<createdTime>2023-11-10 00:23:13 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+<schemaObject>2E19BE5D-C621-F6D5-CA83-C24DC26FFCD6</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>B9A15B59-9CF4-B99A-AC34-495220F6CB62</segment>
+<tableSpace>C867269A-6FAC-988C-7E3D-0AC5F77A5D97</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="FECHA_NACIMIENTO" id="028A7A9D-5A94-C5EA-00DB-7E543D32886D">
+<createdBy>samue</createdBy>
+<createdTime>2023-11-10 00:23:13 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="SEXO" id="164364BF-61D7-6C38-C38A-89A36477D1A6">
+<createdBy>samue</createdBy>
+<createdTime>2023-11-10 00:23:13 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="NOMBRE_COMPLETO" id="347C8ACA-6AED-EADE-6F2D-E9F04459A098">
+<createdBy>samue</createdBy>
+<createdTime>2023-11-10 00:23:13 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="CORREO_ELECTRONICO" id="770FC925-A89A-DEDA-D467-13DB1D1CBD49">
+<createdBy>samue</createdBy>
+<createdTime>2023-11-10 00:23:13 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="DOCUMENTO_IDENTIDAD" id="954C2264-3BA1-7F40-D72C-387C1E70AAE9">
+<createdBy>samue</createdBy>
+<createdTime>2023-11-10 00:23:13 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ID_ROL" id="A3BC13AF-457F-A6D5-0438-4F0030312702">
+<createdBy>samue</createdBy>
+<createdTime>2023-11-10 00:23:13 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="CONTRASENA" id="E9463222-34C4-04E3-7BBE-DE0F26AD6F50">
+<createdBy>samue</createdBy>
+<createdTime>2023-11-10 00:23:13 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK_ROL" id="B7BA726C-096F-1CE1-42C2-CFB45AFC9C49">
+<createdBy>samue</createdBy>
+<createdTime>2023-11-10 00:23:14 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="USUARIOS_PK" id="CD8D0D62-09FD-C22A-556A-A39415C3D5D5">
+<createdBy>samue</createdBy>
+<createdTime>2023-11-10 00:23:14 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+<schemaObject>2E19BE5D-C621-F6D5-CA83-C24DC26FFCD6</schemaObject>
+<segment>D8039DE0-2C52-FC01-E057-4C3860866762</segment>
+<tableSpace>C867269A-6FAC-988C-7E3D-0AC5F77A5D97</tableSpace>
+<indexSegment>D8039DE0-2C52-FC01-E057-4C3860866762</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+<uniqueKeys>
+<UniqueKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.UniqueOraclev10g" name="USUARIOS_CORREO_ELECTRONICO_UN" id="3B0BEEF2-598A-8294-FF96-2269F36F0253">
+<createdBy>samue</createdBy>
+<createdTime>2023-11-10 00:23:14 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+<schemaObject>2E19BE5D-C621-F6D5-CA83-C24DC26FFCD6</schemaObject>
+<segment>D8039DE0-2C52-FC01-E057-4C3860866762</segment>
+<tableSpace>C867269A-6FAC-988C-7E3D-0AC5F77A5D97</tableSpace>
+<indexSegment>D8039DE0-2C52-FC01-E057-4C3860866762</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</UniqueKey>
+</uniqueKeys>
+</TableProxyOraclev20c>

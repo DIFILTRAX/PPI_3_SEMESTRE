@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de Control - Administrador</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+  <style>
+
+    /* Cambia el color de fondo de la barra de navegación */
+    .bg-primary {
+      background-color: #85b31b !important;
+    }
+
+    .btn-primary {
+      background-color: #85b31b !important;
+    }
+
+    .btn-success{
+
+      background-color: #85b31b !important;
+    }
+
+    /* En tu archivo de estilos CSS */
+    .boton-ver-descripcion {
+        background-color: #85b31b !important;
+        color: white;
+}
+
+
+    
+  </style>
+</head>
+<body>
+  <header class="bg-primary text-light py-4">
+    <div class="container">
+      <div class="d-flex align-items-center">
+        <button class="btn btn-link text-light" onclick="window.history.back();">
+          <i class="fas fa-arrow-left"></i>
+        </button>
+        <h1 class="ml-3">Panel de Control - Administrador</h1>
+      </div>
+    </div>
+  </header>
+  <main class="container mt-4">
+    <div class="row">
+      <!-- Estadísticas Clave -->
+      <div class="col-md-6">
+        <h2 class="mb-3">Estadísticas Clave</h2>
+        <div class="card">
+          <div class="card-body">
+            <h3>Usuarios Registrados</h3>
+            <p class="card-text" id="totalUsers"><span id="totalUsersValue" style="font-size: 44px;">Cargando...</span></p>
+          </div>
+        </div>
+        <div class="card mt-3">
+          <div class="card-body">
+            <h3>Eventos Programados</h3>
+            <p id="totalEventsValue"  style="font-size: 44px;"><span>Cargando...</span></p>
+          </div>
+
+        </div>
+        <button id="abrirModal" class="btn btn-primary btn-sm-1" data-toggle="modal" data-target="#crearEventoModal">Crear Evento</button>
+        <button type="button" class="btn btn-success" onclick="abrirModalInscribirUsuario()">Inscribir Evento</button>
+        <button id="btnAbrirModalEditar" class="btn btn-primary btn-sm-1">Editar Evento</button>
+        <button id="abrirEliminarEventoModal" class="btn btn-danger" onclick="abrirEliminarEventoModal()">Eliminar Evento</button>
+        
+      
+
+
+
+
+
+        <div class="modal fade" id="eliminarEventoModal" tabindex="-1" role="dialog" aria-labelledby="eliminarEventoModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="eliminarEventoModalLabel">Eliminar Evento</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group">
+                    <label for="selectEventoEliminar">Seleccionar Evento:</label>
+                    <select id="selectEventoEliminar" class="form-control"></select>
+                  </div>
+                  <button type="button" class="btn btn-danger" id="eliminarEventoConfirmar">Eliminar</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+<!-- Modal para elegir qué evento editar -->
+<div id="seleccionarEventoModal" class="modal draggable">
+  <div class="modal-content">
+      <span id="cerrarModalSeleccionarEvento" class="close">&times;</span>
+      <h2>Seleccionar Evento</h2>
+      <form>
+          <div class="mb-3">
+              <label for="selectEventoEditar">Seleccionar Evento:</label>
+              <select id="selectEventoEditar" class="form-control">
+              </select>
+          </div>
+          <button type="button" class="btn btn-primary" onclick="abrirModalEditarDetallesEvento()">Editar</button>
+      </form>
+  </div>
+</div>
+
+<!-- Modal para editar evento -->
+<div id="editarEventoModal" class="modal draggable">
+  <div class="modal-content">
+      <span id="cerrarModalEditarEvento" class="close">&times;</span>
+      <h2>Editar Evento</h2>
+      <form>
+          
+          <div class="mb-3">
+              <label for="tituloEvento">Título:</label>
+              <input type="text" id="tituloEvento" class="form-control">
+          </div>
+          <div class="mb-3">
+              <label for="descripcionEvento">Descripción:</label>
+              <input type="text" id="descripcionEvento" class="form-control">
+          </div>
+          <div class="mb-3">
+              <label for="fechaEvento">Fecha:</label>
+              <input type="date" id="fechaEvento" class="form-control">
+          </div>
+          <div class="mb-3">
+              <label for="horaEvento">Hora:</label>
+              <input type="time" id="horaEvento" class="form-control">
+          </div>
+          <div class="mb-3">
+              <label for="lugarEvento">Lugar:</label>
+              <input type="text" id="lugarEvento" class="form-control">
+          </div>
+
+          <div id="detallesEventoContainer"></div>
+
+          <button type="button" class="btn btn-primary" onclick="guardarCambiosEvento()">Guardar Cambios</button>
+      </form>
+  </div>
+</div>
+
+        
+
+
+
+
+        
+      </div>
+      <!-- Resúmenes -->
+      <div class="col-md-6">
+        <h2 class="mb-3">Resúmenes</h2>
+        <div class="card">
+          <div class="card-body">
+            <h3>Último Evento</h3>
+            <p>Nombre del evento</p>
+            <p>Fecha: 01/01/2023</p>
+            <p>Asistentes: 200</p>
+          </div>
+        </div>
+        <div class="card mt-3">
+          <div class="card-body">
+            <h3>Información de Eventos</h3>
+            <div id="infoEventos"></div>
+          </div>
+        </div>
+        
+    
+      </div>
+    </div>
+
+    <!-- Modal para Crear Evento -->
+<div class="modal fade" id="crearEventoModal" tabindex="-1" role="dialog" aria-labelledby="crearEventoModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="crearEventoModalLabel">Crear Nuevo Evento</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Formulario para crear un nuevo evento -->
+        <form>
+          <div class="form-group">
+            <label for="titulo">Título del Evento</label>
+            <input type="text" class="form-control" id="titulo" placeholder="Ingrese el título del evento">
+          </div>
+          <div class="form-group">
+            <label for="descripcion">Descripción</label>
+            <textarea class="form-control" id="descripcion" rows="3" placeholder="Ingrese una descripción del evento"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="fecha">Fecha</label>
+            <input type="date" class="form-control" id="fecha" pattern="\d{4}-\d{2}-\d{2}">
+          </div>
+          <div class="form-group">
+            <label for="hora">Hora</label>
+            <input type="time" class="form-control" id="hora" pattern="\d{2}:\d{2}">
+          </div>
+          <div class="form-group">
+            <label for="lugar">Lugar</label>
+            <input type="text" class="form-control" id="lugar" placeholder="Ingrese el lugar del evento">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" id="guardarEvento">Guardar Evento</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para Mostrar el Mensaje de Éxito -->
+<div class="modal fade" id="eventoCreadoModal" tabindex="-1" role="dialog" aria-labelledby="eventoCreadoModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="eventoCreadoModalLabel">Evento Creado Exitosamente</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Tu evento ha sido creado con éxito.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Finalizar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para inscribir a un usuario en un evento -->
+<div id="inscribirUsuarioModal" class="modal draggable">
+  <div class="modal-content">
+      <span id="cerrarModalInscribirUsuario" class="close">&times;</span>
+      <h2>Inscribir Usuario en Evento</h2>
+      <form>
+          <div class="mb-3">
+              <label for="selectUsuario">Seleccionar Usuario:</label>
+              <select id="selectUsuario" class="form-control" >
+                 
+              </select>
+          </div>
+          <div class="mb-3">
+              <label for="idEvento">ID del Evento:</label>
+              <input id="idEvento" class="form-control">
+          </div>
+          <button type="button" class="btn btn-primary" onclick="inscribirUsuarioEnEvento()">Inscribir</button>
+      </form>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Descripción del Evento</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="modalBody">
+        <!-- Aquí se mostrará la descripción -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+  </main>
+  <footer class="bg-primary text-light text-center py-2 mt-sm-4">
+    <p>&copy; 2023 Semillero Ludica y Saber</p>
+  </footer>
+
+
+
+  <script>
+    document.getElementById("abrirModal").addEventListener("click", function() {
+      $('#crearEventoModal').modal('show');
+    });
+  </script>
+  
+
+  <script>
+    document.getElementById("guardarEvento").addEventListener("click", function() {
+   
+      const titulo = document.getElementById("titulo").value;
+      const descripcion = document.getElementById("descripcion").value;
+      const fecha = document.getElementById("fecha").value;
+      const hora = document.getElementById("hora").value;
+      const lugar = document.getElementById("lugar").value;
+  
+      // Crea un objeto con los datos del evento
+      const nuevoEvento = {
+  titulo: titulo,
+  descripcion: descripcion,
+  fecha: fecha,
+  hora: hora,
+  lugar: lugar
+};
+  
+      // Realiza una solicitud AJAX para guardar el nuevo evento en la base de datos
+      fetch("/guardarEvento", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(nuevoEvento)
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data && data.status === "success") {
+       
+            $('#eventoCreadoModal').modal('show');
+          
+            $('#crearEventoModal').modal('hide');
+          } else {
+            //alert("Error al crear el evento.");
+          }
+        })
+        .catch(error => {
+          // Maneja errores
+          console.error("Error al guardar el evento:", error);
+        });
+    });
+
+    
+
+    // Realiza una solicitud para obtener el total de eventos programados
+fetch('/getTotalEvents')
+  .then(response => response.json())
+  .then(data => {
+    const totalEventsValue = document.getElementById('totalEventsValue');
+    totalEventsValue.textContent = data.totalEvents;
+    console.log('Datos de eventos recibidos:', data);
+  })
+  .catch(error => console.error('Error al obtener el número de eventos programados: ', error));
+
+
+
+    function abrirEliminarEventoModal() {
+        $('#eliminarEventoModal').modal('show');
+    }
+
+    document.addEventListener('DOMContentLoaded', (event) => {
+ 
+  fetch('/getTotalUsers')
+    .then(response => response.json())
+    .then(data => {
+      const totalUsersValue = document.getElementById('totalUsersValue');
+      totalUsersValue.textContent = data.totalUsuarios;
+      console.log('Datos recibidos:', data);
+    })
+    .catch(error => console.error('Error al obtener el número de usuarios registrados: ', error));
+});
+
+
+
+
+  // Función para cargar dinámicamente la lista de eventos en el modal de eliminar
+function cargarListaEventosEliminar() {
+  const selectEventoEliminar = document.getElementById('selectEventoEliminar');
+
+  // Realiza una solicitud AJAX para obtener la lista de eventos en formato JSON
+  fetch('/getListaEventosEliminar')
+    .then(response => response.json())
+    .then(data => {
+      selectEventoEliminar.innerHTML = '';
+
+      data.forEach(evento => {
+        const option = document.createElement('option');
+        option.value = evento[0];
+        option.textContent = evento[0] + ' - ' + evento[1];
+        selectEventoEliminar.appendChild(option);
+      });
+    })
+    .catch(error => console.error('Error al cargar la lista de eventos: ', error));
+}
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    cargarListaEventosEliminar();
+});
+
+// Función para eliminar un evento
+document.getElementById('eliminarEventoConfirmar').addEventListener('click', function () {
+  const selectEventoEliminar = document.getElementById('selectEventoEliminar');
+  const selectedValue = selectEventoEliminar.value;
+  if (!selectedValue) {
+    alert('Debes seleccionar un evento a eliminar.');
+    return;
+  }
+
+  const [eventoId, titulo] = selectedValue.split(' - ');
+
+  // Realizar una solicitud al servidor para eliminar el evento
+  fetch('/eliminarEvento', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      eventoId: eventoId,
+      titulo: titulo,
+    }),
+  })
+    .then((response) => {
+      if (response.ok) {
+        alert('Evento eliminado exitosamente.');
+        cargarListaEventosEliminar(); 
+        cargarListaEventosPrincipal(); 
+      } else {
+        alert('Error al eliminar el evento.');
+      }
+    })
+    .catch((error) => {
+      console.error('Error al enviar la solicitud POST:', error);
+    });
+});
+
+
+
+
+btnAbrirModalEditar.addEventListener('click', function() {
+   
+    abrirModalSeleccionarEvento();
+});
+
+// Función para abrir el modal de seleccionar evento
+function abrirModalSeleccionarEvento() {
+    
+    const modalSeleccionarEvento = document.getElementById('seleccionarEventoModal');
+
+    
+    modalSeleccionarEvento.style.display = 'block';
+}
+
+function abrirModalEditarDetallesEvento() {
+    const seleccionarEventoModal = document.getElementById('seleccionarEventoModal');
+    seleccionarEventoModal.style.display = 'none'; 
+
+    const editarEventoModal = document.getElementById('editarEventoModal');
+    editarEventoModal.style.display = 'block'; 
+
+    // Obtener el valor seleccionado actualmente en el selectEventoEditar
+    const evento_id = selectEventoEditar.value;
+
+    // Cargar los detalles del evento seleccionado
+    cargarDetallesEvento(evento_id);
+}
+
+
+// Función para abrir el modal de selección de eventos
+function abrirModalEditarEvento() {
+    const seleccionarEventoModal = document.getElementById('seleccionarEventoModal');
+    seleccionarEventoModal.style.display = 'block';
+}
+
+
+// Función para cargar dinámicamente la lista de eventos en el modal de selección
+function cargarListaEventosEditar() {
+  const selectEventoEditar = document.getElementById('selectEventoEditar');
+
+
+  selectEventoEditar.addEventListener('change', function () {
+
+    const evento_id = selectEventoEditar.value;
+
+    // Cargar los detalles del evento seleccionado
+    cargarDetallesEvento(evento_id);
+  });
+
+  fetch('/getListaEventosEditar')
+    .then(response => response.json())
+    .then(data => {
+      console.log('Datos recibidos:', data);
+
+      if (Array.isArray(data) && data.length > 0 && typeof data[0] === 'object') {
+        selectEventoEditar.innerHTML = '';
+
+        data.forEach(evento => {
+          const option = document.createElement('option');
+          option.value = evento.evento_id;
+          option.textContent = evento.evento_id + ' - ' + evento.titulo;
+          selectEventoEditar.appendChild(option);
+        });
+
+        // Luego de cargar la lista, también cargamos los detalles del primer evento (si hay alguno)
+        const primerEventoId = data[0].evento_id;
+        cargarDetallesEvento(primerEventoId);
+      } else {
+        console.error('La respuesta del servidor no tiene el formato esperado.');
+      }
+    })
+    .catch(error => console.error('Error al cargar la lista de eventos: ', error));
+}
+
+
+
+// Función para cargar los detalles del evento
+function cargarDetallesEvento(evento_id) {
+    fetch(`/getDetallesEvento/${evento_id}`)
+        .then(response => response.json())
+        .then(detallesEvento => {
+            console.log('Detalles del evento:', detallesEvento);
+
+            // Rellenar los campos del modal con los detalles del evento
+            document.getElementById('tituloEvento').value = detallesEvento.TITULO;
+            document.getElementById('descripcionEvento').value = detallesEvento.DESCRIPCION;
+            document.getElementById('fechaEvento').valueAsDate = new Date(detallesEvento.FECHA);
+            document.getElementById('horaEvento').value = detallesEvento.HORA.slice(11, 16);
+            document.getElementById('lugarEvento').value = detallesEvento.LUGAR;
+
+            // Otras acciones necesarias según la estructura de tu formulario/modal
+        })
+        .catch(error => console.error('Error al cargar detalles del evento:', error));
+}
+
+function guardarCambiosEvento() {
+  const evento_id = document.getElementById('selectEventoEditar').value;
+  const titulo = document.getElementById('tituloEvento').value;
+  const descripcion = document.getElementById('descripcionEvento').value;
+  const fecha = document.getElementById('fechaEvento').value;
+  const hora = document.getElementById('horaEvento').value.slice(0, 5);
+  const lugar = document.getElementById('lugarEvento').value;
+
+  fetch('/actualizarEvento', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ evento_id, titulo, descripcion, fecha, hora, lugar }),
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      
+    })
+    .catch(error => console.error('Error al realizar la solicitud de actualización:', error));
+}
+
+// Función para formatear la hora
+function formatearHora(fechaHora) {
+  const fecha = new Date(fechaHora);
+  const horaFormateada = `${String(fecha.getHours()).padStart(2, '0')}:${String(fecha.getMinutes()).padStart(2, '0')}:${String(fecha.getSeconds()).padStart(2, '0')}`;
+  return horaFormateada;
+}
+
+
+
+
+function abrirModalInscribirUsuario() {
+    // Abre el modal para inscribir usuario en evento
+    const modal = document.getElementById('inscribirUsuarioModal');
+    modal.style.display = 'block';
+
+ 
+    cargarListaUsuarios();
+}
+
+
+function cargarListaUsuarios() {
+    // Realiza una solicitud al servidor para obtener la lista de usuarios
+    fetch('/obtenerListaUsuarios')
+    .then(response => response.json())
+    .then(data => {
+     
+        const selectUsuario = document.getElementById('selectUsuario');
+        selectUsuario.innerHTML = ''; 
+
+        data.forEach(usuario => {
+            const option = document.createElement('option');
+            option.value = usuario.documento_identidad; 
+            option.textContent = usuario.documento_identidad + ' - ' + usuario.nombreCompleto;  
+            selectUsuario.appendChild(option);
+        });
+    })
+    .catch(error => {
+        console.error('Error al obtener la lista de usuarios: ', error);
+    });
+}
+
+
+
+
+
+function inscribirUsuarioEnEvento() {
+    const idEvento = document.getElementById('idEvento').value;
+    const documentoIdentidad = document.getElementById('selectUsuario').value;
+
+    // Realiza una solicitud al servidor para inscribir al usuario en el evento
+    fetch('/inscribirUsuarioEnEvento', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ idEvento, documentoIdentidad }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        if (data.estado === 'éxito') {
+          
+            alert('Usuario inscrito exitosamente en el evento');
+        } else {
+     
+            alert('Error: ' + data.mensaje);
+        }
+    })
+    .catch(error => {
+        console.error('Error al realizar la solicitud de inscripción: ', error);
+    });
+}
+
+
+
+
+
+
+// Llama a la función para cargar eventos en el modal de selección cuando la página se carga
+document.addEventListener('DOMContentLoaded', function () {
+    cargarListaEventosEditar();
+});
+
+
+
+// Función para cargar la información de eventos
+function cargarInfoEventos() {
+  // Realiza una solicitud al servidor para obtener la información de los eventos
+  fetch('/obtenerInfoEventos')
+    .then(response => response.json())
+    .then(data => {
+      const infoEventosDiv = document.getElementById('infoEventos');
+
+      infoEventosDiv.innerHTML = '';
+
+      // Muestra la información de los eventos en el div
+      data.infoEventos.forEach(evento => {
+        const eventoDiv = document.createElement('div');
+        eventoDiv.id = `evento-${evento.evento_id}`; 
+        eventoDiv.innerHTML = `
+          <p><strong>ID del Evento:</strong> ${evento.evento_id}</p>
+          <p><strong>Título:</strong> ${evento.titulo}</p>
+          <p><strong>Fecha:</strong> ${evento.fecha}</p>
+          <p><strong>Hora:</strong> ${evento.hora}</p>
+          <p><strong>Lugar:</strong> ${evento.lugar}</p>
+          <button onclick="mostrarDescripcion(${evento.evento_id})" class="boton-ver-descripcion">Ver Descripción</button>
+          <hr>
+        `;
+
+        // Agrega la descripción como un atributo data-descripcion
+        const descripcionAttr = document.createAttribute('data-descripcion');
+        descripcionAttr.value = data.descripciones[evento.evento_id];
+        eventoDiv.setAttributeNode(descripcionAttr);
+
+        infoEventosDiv.appendChild(eventoDiv);
+      });
+    })
+    .catch(error => {
+      console.error('Error al obtener la información de eventos: ', error);
+    });
+}
+
+// Función para mostrar la descripción en un modal
+function mostrarDescripcion(evento_id) {
+  
+  const descripcion = document.getElementById(`evento-${evento_id}`).getAttribute('data-descripcion');
+
+
+  const modalBody = document.getElementById('modalBody');
+  modalBody.textContent = descripcion;
+
+  // Abre el modal
+  const myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
+  myModal.show();
+}
+
+cargarInfoEventos();
+
+
+ 
+
+
+
+
+
+// Obtén una lista de todos los elementos con la clase "close"
+const closeButtons = document.getElementsByClassName("close");
+
+
+for (const closeButton of closeButtons) {
+    closeButton.addEventListener("click", function () {
+        
+        const modal = this.closest(".modal");
+        if (modal) {
+            modal.style.display = "none"; 
+        }
+    });
+}
+
+
+window.addEventListener("click", function (event) {
+  
+    if (event.target.classList.contains("modal")) {
+        event.target.style.display = "none";
+    }
+});
+
+
+  
+  </script>
+  
+ 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

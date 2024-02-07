@@ -1,0 +1,117 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="BB7AA6A5-6276-3BB8-BCE2-081D139B48A1" name="EVENTOS">
+<sourceConnName>semillero</sourceConnName>
+<sourceObjSchema>C##ADMI1</sourceObjSchema>
+<sourceObjName>EVENTOS</sourceObjName>
+<createdBy>samue</createdBy>
+<createdTime>2023-11-09 16:17:16 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="EVENTO_ID" id="146E85DB-6796-70CE-1AF9-8F19B4DA837E">
+<sourceConnName>semillero</sourceConnName>
+<sourceObjSchema>EVENTOS</sourceObjSchema>
+<sourceObjName>EVENTO_ID</sourceObjName>
+<createdBy>samue</createdBy>
+<createdTime>2023-11-09 16:17:18 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TITULO" id="B01A1144-7B6E-9089-50EF-C0C238327C3B">
+<sourceConnName>semillero</sourceConnName>
+<sourceObjSchema>EVENTOS</sourceObjSchema>
+<sourceObjName>TITULO</sourceObjName>
+<createdBy>samue</createdBy>
+<createdTime>2023-11-09 16:17:18 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<notNullConstraintName>NN_TITULO</notNullConstraintName>
+</Column>
+<Column name="DESCRIPCION" id="320B57CA-9CDA-5609-F3FC-E22069564AFB">
+<sourceConnName>semillero</sourceConnName>
+<sourceObjSchema>EVENTOS</sourceObjSchema>
+<sourceObjName>DESCRIPCION</sourceObjName>
+<createdBy>samue</createdBy>
+<createdTime>2023-11-09 16:17:18 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT028</logicalDatatype>
+<dataTypeSize>4000</dataTypeSize>
+<ownDataTypeParameters>4000,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FECHA" id="2894F987-CAB6-C06C-8CC7-C930B1E4CCFE">
+<sourceConnName>semillero</sourceConnName>
+<sourceObjSchema>EVENTOS</sourceObjSchema>
+<sourceObjName>FECHA</sourceObjName>
+<createdBy>samue</createdBy>
+<createdTime>2023-11-09 16:17:18 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="HORA" id="EB679D08-AA04-3131-5356-33CE79BD395D">
+<sourceConnName>semillero</sourceConnName>
+<sourceObjSchema>EVENTOS</sourceObjSchema>
+<sourceObjName>HORA</sourceObjName>
+<createdBy>samue</createdBy>
+<createdTime>2023-11-09 16:17:18 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="LUGAR" id="599E67D5-00D3-C9D6-4C1E-FA9B0855E838">
+<sourceConnName>semillero</sourceConnName>
+<sourceObjSchema>EVENTOS</sourceObjSchema>
+<sourceObjName>LUGAR</sourceObjName>
+<createdBy>samue</createdBy>
+<createdTime>2023-11-09 16:17:18 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="CD6F3184-0617-A92D-3AFE-E4BB17918976" schemaObject="4289C62E-7DDF-498F-4A3B-041BD00927C4" name="EVENTOS_PK">
+<sourceConnName>semillero</sourceConnName>
+<sourceObjSchema>C##ADMI1</sourceObjSchema>
+<sourceObjName>SYS_C008455</sourceObjName>
+<createdBy>samue</createdBy>
+<createdTime>2023-11-09 16:17:24 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="146E85DB-6796-70CE-1AF9-8F19B4DA837E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

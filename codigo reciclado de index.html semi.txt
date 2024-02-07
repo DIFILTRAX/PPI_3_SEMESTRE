@@ -1,0 +1,1771 @@
+codigo reciclado de index.html semillero
+
+encontrar procesos en el servidor:  netstat -ano | findStr "3004"
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LudicaWeb</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" type="text/css" href="index.css">
+  
+
+
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <img src="logo_ludicaweb1.png" alt="logo" class="logo">
+            <h1>Semillero Ludica y Saber</h1>
+        </div>
+        
+    </header>
+    <div class="logo-container">
+        <a href="inicio">
+            <img src="user.svg" alt="Iniciar Sesión" class="logo1">
+        </a>
+        <h5>
+            <a href="inicio.html">Cuenta</a>
+        </h5>
+        
+    </div>
+    
+    <div class="container">
+        <p class="descripcion">
+            Investiguemos y Juguemos Semillero de Lúdica y Saber, bajo la coordinación de <span id="profe">la profesora Doris Elena Salazar Hernández</span>, perteneciente al área de Lúdica, nace desde el semestre 02-2018 con la vinculación de 4 estudiantes en formación al proyecto de investigación formativa, de tesis doctoral “El juego cooperativo reflexivo como dispositivo de formación”. Al tiempo que se vincularon las docentes del área de Lúdica y estudiantes interesados en profundizar las temáticas del juego, la lúdica y la recreación. Actualmente tiene inscritos 25 estudiantes, 5 graduados del programa de la Licenciatura y 6 docentes de la Facultad.
+
+        </p>
+
+        
+        <h2 id="Vision"><strong>Visión</strong></h2> 
+        <p class="descripcion-vision">
+
+            En el 2025, aspiramos a liderar investigaciones formativas, programas de extensión y capacitaciones basadas en la lúdica y la recreación. También queremos apoyar la movilidad académica y consolidar una comunidad de aprendizaje para ser reconocidos por nuestra calidad a nivel local e internacional.
+
+            
+        </p>
+    </div>
+    <div class="main-content">
+        
+        <div class="video-container">
+            <video controls>
+                <source src="SaveInsta.App - 3190493266805693643_7307584300.mp4" type="video/mp4">
+                
+            </video>
+        </div> 
+    </div>
+    <div class="main-logo">
+        <img src="logo_ludicaweb1.png" alt="main-logo" class="main-logo-image">
+    </div>
+
+    <div class="carta">
+       <a href="inicio">
+        <img src="carta.png" alt="unete-carta" class="carta-png">
+       </a>   
+    </div>
+    <div class="redes-sociales">
+        <a href="#" class="boton-redes">Redes Sociales</a>
+        
+        <div class="iconos">
+          <a href="https://www.instagram.com/politecnicojic/"><img src="instagram.png" alt="instagram"></a>
+          <a href="#"><img src="gmail.png" alt="gmail"></a>
+          <a href="https://www.facebook.com/profile.php?id=100004103796790"><img src="facebook.png" alt="facebook"></a>
+
+        </div>
+      </div>
+
+
+
+</body>
+
+
+
+</html>    
+-------------------------------------------------------------------------------------
+App.js
+
+const express = require('express');
+const oracledb = require('oracledb');
+const bodyParser = require('body-parser');
+
+const app = express();
+const port = 3000;
+
+
+const dbConfig = {
+  user: 'C##admi1',
+  password: 'sam123',
+  connectString: 'localhost:1521/xe' 
+};
+
+//--------------------------------------------------------------------------------------------------------------------
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(express.static(__dirname + '/public'));
+
+
+app.get('/index', (req, res) => {
+  res.sendFile(__dirname + '/index.html');
+});
+
+app.get('/inicio', (req, res) => {
+  res.sendFile(__dirname + '/inicio.html');
+});
+
+app.get('/registro', (req, res) => {
+  res.sendFile(__dirname + '/registro.html'); 
+});
+
+app.get('/principal', (req, res) => {
+  res.sendFile(__dirname + '/principal.html');
+});
+
+app.get('/lideres', (req, res) => {
+  res.sendFile(__dirname + '/lideres.html'); 
+});
+
+app.get('/admi', (req, res) => {
+  res.sendFile(__dirname + '/admi.html'); 
+});
+
+app.get('/crono18', (req, res) => {
+  res.sendFile(__dirname + '/crono18.html');
+});
+
+app.get('/crono19', (req, res) => {
+  res.sendFile(__dirname + '/crono19.html');
+});
+//--------------------------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------------------------
+// Ruta para procesar el formulario de registro
+app.post('/registro', (req, res) => {
+  const { nombre_completo, correo_electronico, contrasena, fecha_nacimiento, sexo, documento_identidad } = req.body;
+
+  console.log('Fecha de nacimiento recibida:', fecha_nacimiento);
+
+  // Conecta a la base de datos
+  oracledb.getConnection(dbConfig, (err, connection) => {
+    if (err) {
+      console.error('Error al conectar a la base de datos Oracle: ', err);
+      res.status(500).send('Error al conectar a la base de datos');
+      return;
+    }
+
+    // Ejecuta una consulta SQL para insertar los datos en la tabla
+    const sql = `INSERT INTO SYSTEM.usuarios (nombre_completo, correo_electronico, contrasena, fecha_nacimiento, sexo, documento_identidad) VALUES (:1, :2, :3, TO_DATE(:4, 'YYYY-MM-DD'), :5, :6)`;
+
+    connection.execute(
+      sql,
+      [nombre_completo, correo_electronico, contrasena, fecha_nacimiento, sexo, documento_identidad],
+      { autoCommit: true }, // Habilita el autocommit para confirmar la transacción automáticamente
+      (err, result) => {
+        if (err) {
+          console.error('Error al insertar en la base de datos Oracle: ', err);
+          res.status(500).send('Error al registrar el usuario');
+        } else {
+          console.log('Registro exitoso');
+          res.send('Registro exitoso');
+        }
+
+        // Cierra la conexión a la base de datos
+        connection.close((err) => {
+          if (err) {
+            console.error('Error al cerrar la conexión a la base de datos: ', err);
+          }
+        });
+      }
+    );
+  });
+});
+//----------------------------------------------------------------------------------------------------------------------
+
+app.post('/inicio', async (req, res) => {
+  const { correo_electronico, contrasena } = req.body;
+
+  
+  oracledb.getConnection(dbConfig, (err, connection) => {
+    if (err) {
+      console.error('Error al conectar a la base de datos Oracle: ', err);
+      res.status(500).send('Error al conectar a la base de datos');
+      return;
+    }
+
+    
+    const sql = `SELECT * FROM SYSTEM.usuarios WHERE correo_electronico = :1 AND contrasena = :2`;
+    connection.execute(
+      sql,
+      [correo_electronico, contrasena],
+      (err, result) => {
+        if (err) {
+          console.error('Error al consultar la base de datos Oracle: ', err);
+          res.status(500).send('Error en el servidor');
+        } else {
+          if (result.rows.length === 1) {
+          
+            console.log('Inicio de sesión exitoso');
+            res.send('Inicio de sesión exitoso');
+          } else {
+        
+            res.status(401).send('Credenciales no válidas');
+          }
+        }
+
+
+        connection.close((err) => {
+          if (err) {
+            console.error('Error al cerrar la conexión a la base de datos: ', err);
+          }
+        });
+      }
+    );
+  });
+});
+
+Samuel Echeverry Pineda
+
+    
+//--------------------------------------------------------------------------------------------------------------------
+    
+// Inicia el servidor
+app.listen(port, () => {
+  console.log(`Servidor Node.js escuchando en el puerto ${port}`);
+});
+
+
+----------------------------------------------------
+ADMI
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Panel de Administrador</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" type="text/css" href="admi.css">
+</head>
+<body>
+    <header class="negro">
+        <img src="titulo_negro-removebg-preview.png" alt="Título" class="titulo-img">
+    </header>
+    <header class="second-header">
+        <img src="ludicaweb_title.png" alt="Título" class="second-header-img">
+        
+        <a href="/lideres">
+            <img src="noti.png" alt="Líderes" class="notificaciones">
+        </a>
+
+        <a href="/admi">
+            <img src="logo_ludicaweb1.png" alt="logo" class="logo_ofi">
+        </a>
+    </header>    
+  
+    <h1 class="panel">Panel de Administrador</h1>
+    
+
+
+  <main>
+
+    <section class="event-list">
+      <h2 class="actuales">Eventos Actuales</h2>
+      
+      <img src="tecno.png" alt="Folleto del Evento" class="tecno-img">
+
+      <img src="arte-urbano.png" alt="Imagen Adicional" class="arte-img">
+    </section>
+
+
+    <section class="add-event">
+      <h2 class="agregar">Agregar Nuevo Evento</h2>
+      <form action="/agregar_evento" method="POST" enctype="multipart/form-data">
+        <label for="titulo">Título del Evento:</label>
+        <input type="text" id="titulo" name="titulo" required>
+        <br>
+        <label for="fecha">Fecha del Evento:</label>
+        <input type="date" id="fecha" name="fecha" required>
+        <br>
+        <label for="descripcion">Descripción:</label>
+        <textarea id="descripcion" name="descripcion" required></textarea>
+        <br>
+        <label for="imagen">Imagen:</label>
+        <input type="file" id="imagen" name="imagen" accept="image/*" required>
+        <br>
+        <button class="button-agregar" type="submit">Agregar Evento</button>
+      </form>
+    </section>
+    <div class="mitad-inferior"></div>
+
+  </main>
+
+  <div class="mitad-inferior"></div>
+
+
+  <script>
+        window.addEventListener('scroll', () => {
+          const secondHeader = document.querySelector('.second-header');
+          if (window.scrollY > 0) {
+            secondHeader.classList.add('sticky');
+          } else {
+            secondHeader.classList.remove('sticky');
+          }
+        });
+    </script>
+</body>
+</html>
+---------------------------------------------------------------------
+const sql = `
+    SELECT documento_identidad, nombre_completo, correo_electronico, contrasena, fecha_nacimiento, sexo, id_rol
+    FROM usuarios
+  `;
+
+
+preguntas posibles, en la de usuarios registrados, porque el bloque de js para saber cuantos registros hay, esta en el cuerpo del head y no abajo como es frecuente?
+
+
+
+
+
+
+
+
+me ayudas pare que cuando el usuario le de crear usuario se habra un formulario en la misma ventana con los mismos campos que el del registro, para que cuando el usuario le de al boton crear de el formulario, se inserte en la tabla usuarios, si?
+
+
+
+
+<button type="button" class="btn btn-success" onclick="asignarRol()">Asignar Rol</button>
+
+
+
+----------------------------------------------------------------------------
+
+lista de usuarios mostrar modal: 
+
+app.get('/getListaUsuarios', (req, res) => {
+  // Realiza una consulta SQL para obtener la lista de usuarios (documento_identidad y nombre_completo).
+  const sql = 'SELECT documento_identidad, nombre_completo FROM usuarios';
+
+
+  // Realiza la consulta a la base de datos y devuelve los resultados como JSON.
+  oracledb.getConnection(dbConfig, (err, connection) => {
+      if (err) {
+          console.error('Error al conectar a la base de datos Oracle: ', err);
+          res.status(500).send('Error al conectar a la base de datos');
+          return;
+      }
+
+      connection.execute(sql, [], (err, result) => {
+          if (err) {
+              console.error('Error al ejecutar la consulta: ', err);
+              res.status(500).send('Error al obtener la lista de usuarios');
+              return;
+          }
+
+          // Enviar los resultados como JSON al cliente
+          res.json(result.rows);
+          connection.close((err) => {
+              if (err) {
+                  console.error('Error al cerrar la conexión a la base de datos: ', err);
+              }
+          });
+      });
+  });
+})
+
+
+
+---------------------------------------------------------------------------------
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        
+        table {
+          border-collapse: separate;
+          border-spacing: 10px;
+        }
+
+        
+
+        /* Clase para el botón de editar (color azul) */
+        .btn-editar {
+            background-color: #85b31b;
+            color: white;
+            padding: 5px 20px;
+        }
+
+        .btn-success{
+
+            background-color: #85b31b;
+            color: white;
+            padding: 10px 20px;
+        }
+
+        .btn-primary{
+
+            background-color: #85b31b;
+            color:white;
+            padding: 5px 2px;
+        }
+
+        .btn-primary:hover {
+            background-color: #85b31b; 
+            color: white; 
+  
+        }
+
+        td button {
+        margin-bottom: 5px; /* Puedes ajustar el valor según tus preferencias de espaciado */
+       }
+
+
+        #asignarRolModal {
+   
+            margin-left: 10px;
+            top: 30%;
+            
+            
+        }
+
+        .modal {
+            max-width: 60%; 
+            margin: 0 auto; 
+        }
+
+        .modal-content {
+            margin: 10% auto; 
+            padding: 20px; 
+        }
+
+
+
+    </style>
+      
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de Usuarios</h1>
+        <table class="table table-striped">
+            <tbody id="userTable">
+
+            </tbody>
+        </table>
+
+        <div class="d-inline">
+            <button class="btn btn-success" onclick="abrirFormulario()">Crear Nuevo Usuario</button>
+            
+        </div>
+       
+
+
+        <!-- Formulario para crear un nuevo usuario (inicialmente oculto) -->
+        <div id="crearUsuarioForm" style="display: none;">
+            <h2>Crear Nuevo Usuario</h2>
+            <form>
+                <div class="mb-3">
+                    <label for="idDocument" class="form-label">Documento</label>
+                    <input type="text" class="form-control" id="idDocument" placeholder="Ingresa tu documento de identidad">
+                </div>
+
+                <div class="mb-3">
+                    <label for="name" class="form-label">Nombre Completo</label>
+                    <input type="text" class="form-control" id="name" placeholder="Ingresa tu nombre">
+                </div>
+                
+                <div class="mb-3">
+                    <label for="email" class="form-label">Correo Electrónico</label>
+                    <input type="email" class="form-control" id="email" placeholder="Correo electrónico">
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="password" placeholder="Correo electrónico">
+                </div>
+
+                <div class="mb-3">
+                    <label for="onfirmPassword" class="form-label">Confirmar Contraseña</label>
+                    <input type="password" class="form-control" id="confirmPassword" placeholder="Correo electrónico">
+                </div>
+
+                <div class="mb-3">
+                    <label for="gender">Sexo:</label>
+                    <select id="gender">
+                        <option value="masculino">Masculino</option>
+                        <option value="femenino">Femenino</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="birthdate">Fecha de Nacimiento:</label>
+                    <input type="date" id="birthdate">
+                </div>
+
+                <button type="button" class="btn btn-success"  onclick="crearUsuario()">Crear Usuario</button>
+                <button type="button" class="btn btn-secondary" id="cancelarBtn" onclick="cancelarCreacion()">Cancelar</button>
+                
+            </form>
+        </div>
+      </div>
+      
+      
+
+    
+
+      <!-- Modal para asignar rol -->
+<div id="asignarRolModal" class="modal">
+    <div class="modal-content">
+        <span id="cerrarModal" class="close">&times;</span>
+        <h2>Asignar Rol</h2>
+        <form>
+            <div class="mb-3">
+                <label for="selectUsuario">Seleccionar Usuario:</label>
+                <select id="selectUsuario"  class="form-control">
+                    <!-- Aquí debes cargar dinámicamente la lista de usuarios -->
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="selectRol">Seleccionar Rol:</label>
+                <input type="number" id="selectRol" class="form-control" placeholder="Ingresa el número de rol">
+            </div>
+            <button type="button" class="btn btn-success" onclick="asignarRol()">Asignar Rol</button>
+
+            
+        </form>
+    </div>
+</div>
+
+<!-- Modal para eliminar usuario -->
+<div id="eliminarUsuarioModal" class="modal">
+    <div class="modal-content">
+        <span id="cerrarModalEliminar" class="close">&times;</span>
+        <h2>Eliminar Usuario</h2>
+        <form>
+            <div class="mb-3">
+                <label for="selectUsuarioEliminar">Seleccionar Usuario:</label>
+                <select id="selectUsuarioEliminar" class="form-control">
+                    <!-- Aquí debes cargar dinámicamente la lista de usuarios -->
+                </select>
+            </div>
+            <button type="button" class="btn btn-danger" onclick="eliminarUsuarioConfirmar()">Eliminar</button>
+        </form>
+    </div>
+</div>
+
+
+    
+
+        <h2>Historial de Actividades</h2>
+        <ul id="activityLog" class="list-group">
+            <!-- Aquí se mostrarán las actividades -->
+        </ul>
+    </div>
+
+    
+
+    <script>
+    function crearUsuario() {
+        const idDocument = document.getElementById('idDocument').value;
+        
+        const name = document.getElementById('name').value;
+    
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        
+        const gender = document.getElementById('gender').value;
+        const birthdate = document.getElementById('birthdate').value;
+        const formattedBirthdate = new Date(birthdate).toISOString().split('T')[0];
+
+        const formData = new URLSearchParams();
+        formData.append('documento_identidad', idDocument);
+        formData.append('nombre_completo', name);
+        formData.append('correo_electronico', email);
+        formData.append('contrasena', password);
+        formData.append('fecha_nacimiento', formattedBirthdate);
+        formData.append('sexo', gender);
+        
+        // Realiza una solicitud POST al servidor Node.js
+        fetch('/gestion_u', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: formData.toString() // Convierte el objeto URLSearchParams a una cadena
+        })
+        .then((response) => {
+          if (response.ok) {
+            
+            alert('Registro exitoso');
+            
+            
+          } else {
+           
+            alert('Error en el registro');
+          }
+        })
+        .catch((error) => {
+          console.error('Error al enviar la solicitud POST:', error);
+        });
+
+      
+    }    
+
+    function cargarUsuarios() {
+        // Realiza una solicitud AJAX para obtener la lista de usuarios en formato HTML
+        fetch('/getUsuarios')
+            .then(response => response.text()) 
+            .then(data => {
+                // Inserta la tabla HTML en el elemento userTable
+                const userTable = document.getElementById('userTable');
+                userTable.innerHTML = data;
+            })
+            .catch(error => console.error('Error al cargar la lista de usuarios: ', error));
+    }
+
+    // Llama a la función para cargar usuarios cuando la página se carga
+    document.addEventListener('DOMContentLoaded', cargarUsuarios);
+
+
+
+
+    function cancelarCreacion() {
+    // Ocultar el formulario para crear un nuevo usuario
+    document.getElementById('crearUsuarioForm').style.display = 'none';
+    
+    // Limpiar los campos del formulario
+    document.getElementById('idDocument').value = '';
+    document.getElementById('name').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('password').value = '';
+    document.getElementById('confirmPassword').value = '';
+    document.getElementById('gender').value = 'masculino'; // Puedes cambiar el valor predeterminado si es necesario
+    document.getElementById('birthdate').value = '';
+
+    // También puedes agregar más acciones de limpieza si es necesario
+
+    // Restablecer mensajes de error si los hubiera
+}
+
+
+
+
+        function abrirFormulario() {
+            // Mostrar el formulario para crear un nuevo usuario
+            document.getElementById('crearUsuarioForm').style.display = 'block';
+        }
+
+
+
+        
+
+        function abrirAsignarRolForm() {
+  // Obtener el modal y el botón de cierre del formulario
+  const modal = document.getElementById('asignarRolModal');
+  const closeButton = document.getElementById('cerrarModal');
+
+  // Muestra el modal
+  modal.style.display = 'block';
+
+  // Cuando se hace clic en el botón de cierre, oculta el modal
+  closeButton.onclick = function() {
+    modal.style.display = 'none';
+  }
+
+  // Cuando se hace clic fuera del modal, también ocúltalo
+  window.onclick = function(event) {
+    if (event.target === modal) {
+      modal.style.display = 'none';
+    }
+  }
+}
+
+
+
+
+
+
+
+function asignarRol() {
+    const usuarioSeleccionado = document.getElementById('selectUsuario').value;
+    const rolSeleccionado = document.getElementById('selectRol').value;
+
+    console.log('Usuario seleccionado:', usuarioSeleccionado);
+    console.log('Rol seleccionado:', rolSeleccionado);
+
+    // Verifica que se hayan seleccionado un usuario y un rol
+    if (usuarioSeleccionado && rolSeleccionado) {
+        // Realiza una solicitud POST al servidor para asignar el rol
+        fetch('/asignarRol', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ usuario: usuarioSeleccionado, rol: rolSeleccionado }),
+        })
+        .then((response) => {
+            if (response.ok) {
+                alert('Rol asignado con éxito');
+            } else {
+                alert('Error al asignar el rol');
+            }
+        })
+        .catch((error) => {
+            console.error('Error al enviar la solicitud POST:', error);
+        });
+    } else {
+        alert('Debes seleccionar un usuario y un rol');
+    }
+}
+
+function abrirEliminarUsuarioForm() {
+    const modal = document.getElementById('eliminarUsuarioModal');
+    modal.style.display = 'block';
+}
+
+function cargarUsuariosEliminar() {
+    const selectUsuarioEliminar = document.getElementById('selectUsuarioEliminar');
+
+    // Realiza una solicitud AJAX para obtener la lista de usuarios en formato JSON
+    fetch('/getUsuarios')
+        .then(response => response.json())
+        .then(data => {
+            // Elimina opciones anteriores (si las hubiera)
+            selectUsuarioEliminar.innerHTML = '';
+
+            // Agrega las nuevas opciones basadas en los datos recibidos del servidor
+            data.forEach(user => {
+                const option = document.createElement('option');
+                option.value = user[0]; // Asigna el valor del documento_identidad
+                option.textContent = user[0] + ' - ' + user[1]; // Muestra documento_identidad y nombre_completo
+                selectUsuarioEliminar.appendChild(option);
+            });
+        })
+        .catch(error => console.error('Error al cargar la lista de usuarios: ', error));
+}
+
+// Llama a la función para cargar usuarios cuando la página se carga
+document.addEventListener('DOMContentLoaded', function() {
+    cargarUsuariosEliminar();
+});
+
+
+
+
+
+        
+
+
+
+        function editarUsuario(userId) {
+            
+        }
+
+        
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+</body>
+</html>
+-------------------------------------------------------------------------
+guardar ya con los model y listas de usuarion seleccionable
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        table {
+            border-collapse: separate;
+            border-spacing: 10px;
+        }
+
+        /* Clase para el botón de edición (color azul) */
+        .btn-editar {
+            background-color: #85b31b;
+            color: white;
+            padding: 5px 20px;
+        }
+
+        .btn-éxito {
+            background-color: #85b31b;
+            color: white;
+            padding: 10px 20px;
+        }
+
+        .btn-primary {
+            background-color: #85b31b;
+            color: white;
+            padding: 5px 2px;
+        }
+
+        .btn-primary:hover {
+            background-color: #85b31b;
+            color: white;
+        }
+
+        td {
+            margin-bottom: 5px;
+        }
+
+        #asignarRolModal {
+            margin-left: 10px;
+            top: 30%;
+        }
+
+        .modal {
+            max-width: 60%;
+            margin: 0 auto;
+        }
+
+        .modal-content {
+            margin: 10% auto;
+            padding: 20px;
+        }
+
+        td button {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Lista de Usuarios</h1>
+        <table class="table table-striped">
+            <tbody id="userTable">
+            </tbody>
+        </table>
+        <div class="d-inline">
+            <button class="btn btn-success" onclick="abrirFormulario()">Crear Nuevo Usuario</button>
+        </div>
+        <!-- Formulario para crear un nuevo usuario (inicialmente oculto) -->
+        <div id="crearUsuarioForm" style="display: none;">
+            <form>
+                <div class="mb-3">
+                    <label for="idDocument">Documento de Identidad:</label>
+                    <input type="text" id="idDocument">
+                </div>
+                <div class="mb-3">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre">
+                </div>
+                <div class="mb-3">
+                    <label for="correoElectronico">Correo Electrónico:</label>
+                    <input type="email" id="correoElectronico">
+                </div>
+                <div class="mb-3">
+                    <label for="contrasena">Contraseña:</label>
+                    <input type="password" id="contrasena">
+                </div>
+                <div class="mb-3">
+                    <label for="genero">Género:</label>
+                    <select id="genero">
+                        <option value="masculino">Masculino</option>
+                        <option value="femenino">Femenino</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+                    <input type="date" id="fechaNacimiento">
+                </div>
+                <button type="button" class="btn btn-success" onclick="crearUsuario()">Crear Usuario</button>
+                <button type="button" class="btn btn-secondary" id="cancelarBtn" onclick="cancelarCreacion()">Cancelar</button>
+            </form>
+        </div>
+    </div>
+    <!-- Modal asignar rol -->
+    <div id="asignarRolModal" class="modal">
+        <div class="modal-content">
+            <span id="cerrarModal" class="close">×</span>
+            <h2>Asignar Rol</h2>
+            <form>
+                <div class="mb-3">
+                    <label for="selectUsuario">Seleccionar Usuario:</label>
+                    <select id="selectUsuario" class="form-control">
+                        <!-- Aquí debes cargar dinámicamente la lista de usuarios -->
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="selectRol">Seleccionar Rol:</label>
+                    <select id="selectRol" class="form-control">
+                    </select>
+                </div>
+                <button type="button" class="btn btn-success" onclick="asignarRol()">Asignar Rol</button>
+            </form>
+        </div>
+    </div>
+
+
+
+    <!-- Modal para eliminar usuario -->
+<div id="eliminarUsuarioModal" class="modal">
+    <div class="modal-content">
+        <span id="cerrarModalEliminar" class="close">&times;</span>
+        <h2>Eliminar Usuario</h2>
+        <form>
+            <div class="mb-3">
+                <label for="selectUsuarioEliminar">Seleccionar Usuario:</label>
+                <select id="selectUsuarioEliminar" class="form-control">
+                    <!-- Aquí se cargarán dinámicamente la lista de usuarios -->
+                </select>
+            </div>
+            <button type="button" class="btn btn-danger" onclick="eliminarUsuarioConfirmar()">Eliminar</button>
+        </form>
+    </div>
+</div>
+
+    <h2>Historial de actividades</h2>
+    <ul id="activityLog" class="list-group">
+        <!-- Aquí se mostrarán las actividades -->
+    </ul>
+</body>
+
+<script>
+    function crearUsuario() {
+        const idDocument = document.getElementById('idDocument').value;
+        const nombre = document.getElementById('nombre').value;
+        const correoElectronico = document.getElementById('correoElectronico').value;
+        const contrasena = document.getElementById('contrasena').value;
+        const genero = document.getElementById('genero').value;
+        const fechaNacimiento = document.getElementById('fechaNacimiento').value;
+        const formattedBirthdate = new Date(fechaNacimiento).toISOString().split('T')[0];
+        const formData = new URLSearchParams();
+        formData.append('documento_identidad', idDocument);
+        formData.append('nombre_completo', nombre);
+        formData.append('correo_electronico', correoElectronico);
+        formData.append('contrasena', contrasena);
+        formData.append('fecha_nacimiento', formattedBirthdate);
+        formData.append('sexo', genero);
+        // Realiza una solicitud POST al servidor Node.js
+        fetch('/gestion_u', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: formData.toString(), // Convierte el objeto URLSearchParams a una cadena
+        })
+        .then((response) => {
+            if (response.ok) {
+                alert('Registro exitoso');
+            } else {
+                alert('Error en el registro');
+            }
+        })
+        .catch((error) => {
+            console.error('Error al enviar la solicitud POST:', error);
+        });
+    }
+
+    function cargarUsuarios() {
+        // Realiza una solicitud AJAX para obtener la lista de usuarios en formato HTML
+        fetch('/getUsuarios')
+        .then(response => response.text())
+        .then(data => {
+            // Inserta la tabla HTML en el elemento userTable
+            const userTable = document.getElementById('userTable');
+            userTable.innerHTML = data;
+        })
+        .catch(error => console.error('Error al cargar la lista de usuarios: ', error));
+    }
+
+    // Llama a la función para cargar usuarios cuando la página se carga
+    document.addEventListener('DOMContentLoaded', cargarUsuarios);
+
+    function cancelarCreacion() {
+        // Ocultar el formulario para crear un nuevo usuario
+        document.getElementById('crearUsuarioForm').style.display = 'none';
+        // Limpiar los campos del formulario
+        document.getElementById('idDocument').value = '';
+        document.getElementById('nombre').value = '';
+    
+       
+        document.getElementById('correoElectronico').value = '';
+        document.getElementById('contrasena').value = '';
+        document.getElementById('genero').value = 'masculino'; // Puedes cambiar el valor predeterminado si es necesario
+        document.getElementById('fechaNacimiento').value = ''; // También puedes agregar más acciones de limpieza si es necesario
+        // Restablecer mensajes de error si los hubiera
+    }
+
+    function abrirFormulario() {
+        // Mostrar el formulario para crear un nuevo usuario
+        document.getElementById('crearUsuarioForm').style.display = 'block';
+    }
+
+    function abrirAsignarRolForm() {
+        // Obtener el modal y el botón de cierre del formulario
+        const modal = document.getElementById('asignarRolModal');
+        const closeButton = document.getElementById('cerrarModal');
+
+        // Muestra el modal
+        modal.style.display = 'block';
+
+        // Cuando se hace clic en el botón de cierre, oculta el modal
+        closeButton.onclick = function () {
+            modal.style.display = 'none';
+        }
+
+        // Cuando se hace clic fuera del modal, también ocúltalo
+        window.onclick = function (event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+    }
+
+    // Función para cargar dinámicamente la lista de usuarios en el modal
+    function cargarListaUsuarios() {
+        const selectUsuario = document.getElementById('selectUsuario');
+        fetch('/getListaUsuarios')
+            .then(response => response.json())
+            .then(data => {
+                // Elimina opciones anteriores (si las hubiera)
+                selectUsuario.innerHTML = '';
+                // Agrega las nuevas opciones basadas en los datos recibidos del servidor
+                data.forEach(user => {
+                    const option = document.createElement('option');
+                    option.value = user[0]; // Asigna el valor del documento_identidad
+                    option.textContent = user[0] + ' - ' + user[1]; // Asigna el valor y el nombre completo del usuario
+                    selectUsuario.appendChild(option);
+                });
+            })
+            .catch(error => console.error('Error al cargar la lista de usuarios: ', error));
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        cargarListaUsuarios();
+    });
+
+    function asignarRol() {
+        const usuarioSeleccionado = document.getElementById('selectUsuario').value;
+        const rolSeleccionado = document.getElementById('selectRol').value;
+        console.log('Usuario seleccionado:', usuarioSeleccionado);
+        console.log('Rol seleccionado:', rolSeleccionado);
+
+        // Verifica que se hayan seleccionado un usuario y un rol
+        if (usuarioSeleccionado && rolSeleccionado) {
+            // Realiza una solicitud POST al servidor para asignar el rol
+            fetch('/asignarRol', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    usuario: usuarioSeleccionado,
+                    rol: rolSeleccionado
+                }),
+            })
+            .then((response) => {
+                if (response.ok) {
+                    alert('Rol asignado con éxito');
+                } else {
+                    alert('Error al asignar el rol');
+                }
+            })
+            .catch((error) => {
+                console.error('Error al enviar la solicitud POST:', error);
+            });
+        } else {
+            alert('Debes seleccionar un usuario y un rol');
+        }
+    }
+
+    function abrirEliminarUsuarioForm() {
+        const modal = document.getElementById('eliminarUsuarioModal');
+        modal.style.display = 'block';
+    }
+
+
+
+    // Función para cargar dinámicamente la lista de usuarios en el modal de eliminar
+function cargarListaUsuariosEliminar() {
+    const selectUsuarioEliminar = document.getElementById('selectUsuarioEliminar');
+
+    // Realiza una solicitud AJAX para obtener la lista de usuarios en formato JSON
+    fetch('/getListaUsuariosEliminar')
+        .then(response => response.json())
+        .then(data => {
+            // Elimina opciones anteriores (si las hubiera)
+            selectUsuarioEliminar.innerHTML = '';
+
+            // Agrega las nuevas opciones basadas en los datos recibidos del servidor
+            data.forEach(user => {
+                const option = document.createElement('option');
+                option.value = user[0]; // Asigna el valor del documento_identidad
+                option.textContent = user[0] + ' - ' + user[1]; // Muestra documento_identidad y nombre_completo
+                selectUsuarioEliminar.appendChild(option);
+            });
+        })
+        .catch(error => console.error('Error al cargar la lista de usuarios: ', error));
+}
+
+// Llama a la función para cargar usuarios en el modal cuando la página se carga
+document.addEventListener('DOMContentLoaded', function () {
+    cargarListaUsuariosEliminar();
+});
+
+
+    function editarUsuario(userId) {
+        // Implementa la funcionalidad de edición de usuario aquí
+    }
+
+   
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</html>
+----------------------------------------
+servidor de ese |
+
+const express = require('express');
+const oracledb = require('oracledb');
+const bodyParser = require('body-parser');
+
+const app = express();
+const port = 3000;
+
+
+
+
+const dbConfig = {
+  user: 'C##admi1',
+  password: 'sam123',
+  connectString: 'localhost:1521/xe' 
+};
+
+
+
+//--------------------------------------------------------------------------------------------------------------------
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(bodyParser.json());
+
+app.use(express.static(__dirname + '/public'));
+
+
+app.get('/index', (req, res) => {
+  res.sendFile(__dirname + '/index.html');
+});
+
+app.get('/panel_admi', (req, res) => {
+  res.sendFile(__dirname + '/panel_admi.html');
+});
+
+app.get('/inicio', (req, res) => {
+  res.sendFile(__dirname + '/inicio.html');
+});
+
+app.get('/registro', (req, res) => {
+  res.sendFile(__dirname + '/registro.html'); 
+});
+
+app.get('/principal', (req, res) => {
+  res.sendFile(__dirname + '/principal.html');
+});
+
+app.get('/lideres', (req, res) => {
+  res.sendFile(__dirname + '/lideres.html'); 
+});
+
+app.get('/panel_C', (req, res) => {
+  res.sendFile(__dirname + '/panel_C.html'); 
+});
+
+app.get('/crono18', (req, res) => {
+  res.sendFile(__dirname + '/crono18.html');
+});
+
+app.get('/crono19', (req, res) => {
+  res.sendFile(__dirname + '/crono19.html');
+});
+
+app.get('/gestion_u', (req, res) => {
+  res.sendFile(__dirname + '/gestion_u.html');
+});
+//--------------------------------------------------------------------------------------------------------------------
+
+// Agrega un manejador de errores
+app.use((err, req, res, next) => {
+  console.error('Error no controlado:', err);
+  res.status(500).send('Error en el servidor');
+});
+
+
+//--------------------------------------------------------------------------------------------------------------------
+// Ruta para procesar el formulario de registro
+app.post('/registro', (req, res) => {
+  const {nombre_completo, correo_electronico, contrasena, fecha_nacimiento, sexo, documento_identidad} = req.body;
+
+  console.log('Fecha de nacimiento recibida:', fecha_nacimiento);
+
+  // Conecta a la base de datos
+  oracledb.getConnection(dbConfig, (err, connection) => {
+    if (err) {
+      console.error('Error al conectar a la base de datos Oracle: ', err);
+      res.status(500).send('Error al conectar a la base de datos');
+      return;
+    }
+
+    // Ejecuta una consulta SQL para insertar los datos en la tabla
+    const sql = `INSERT INTO usuarios (nombre_completo, correo_electronico, contrasena, fecha_nacimiento, sexo, documento_identidad) VALUES (:1, :2, :3, TO_DATE(:4, 'YYYY-MM-DD'), :5, :6)`;
+
+    connection.execute(
+      sql,
+      [nombre_completo, correo_electronico, contrasena, fecha_nacimiento, sexo, documento_identidad],
+      { autoCommit: true }, // Habilita el autocommit para confirmar la transacción automáticamente
+      (err, result) => {
+        if (err) {
+          console.error('Error al insertar en la base de datos Oracle: ', err);
+          res.status(500).send('Error al registrar el usuario');
+        } else {
+          console.log('Registro exitoso');
+          res.send('Registro exitoso');
+        }
+
+        // Cierra la conexión a la base de datos
+        connection.close((err) => {
+          if (err) {
+            console.error('Error al cerrar la conexión a la base de datos: ', err);
+          }
+        });
+      }
+    );
+  });
+});
+//----------------------------------------------------------------------------------------------------------------------
+
+app.post('/inicio', async (req, res) => {
+  const { correo_electronico, contrasena } = req.body;
+
+  
+  oracledb.getConnection(dbConfig, (err, connection) => {
+    if (err) {
+      console.error('Error al conectar a la base de datos Oracle: ', err);
+      res.status(500).send('Error al conectar a la base de datos');
+      return;
+    }
+
+    
+    const sql = `SELECT * FROM usuarios WHERE correo_electronico = :1 AND contrasena = :2`;
+    connection.execute(
+      sql,
+      [correo_electronico, contrasena],
+      (err, result) => {
+        if (err) {
+          console.error('Error al consultar la base de datos Oracle: ', err);
+          res.status(500).send('Error en el servidor');
+        } else {
+          if (result.rows.length === 1) {
+          
+            console.log('Inicio de sesión exitoso');
+            res.send('Inicio de sesión exitoso');
+          } else {
+        
+            res.status(401).send('Credenciales no válidas');
+          }
+        }
+
+
+        connection.close((err) => {
+          if (err) {
+            console.error('Error al cerrar la conexión a la base de datos: ', err);
+          }
+        });
+      }
+    );
+  });
+});
+
+    
+//--------------------------------------------------------------------------------------------------------------------
+//Mostrar el numero total de usuarios registrados
+
+app.get('/getTotalUsers', (req, res) => {
+  const sql = 'SELECT COUNT(*) FROM usuarios';
+
+  oracledb.getConnection(dbConfig, (err, connection) => {
+    if (err) {
+      console.error('Error al conectar a la base de datos Oracle: ', err);
+      res.status(500).json({ error: 'Error al conectar a la base de datos' });
+      return;
+    }
+
+    connection.execute(sql, [], (err, result) => {
+      if (err) {
+        console.error('Error al ejecutar la consulta: ', err);
+        res.status(500).json({ error: 'Error al obtener el número de usuarios registrados' });
+        return;
+      }
+
+      const totalUsers = result.rows[0];
+
+      // Enviar la respuesta como JSON
+      res.json({ totalUsers });
+
+      connection.close((err) => {
+        if (err) {
+          console.error('Error al cerrar la conexión a la base de datos: ', err);
+        }
+      });
+    });
+  });
+});
+
+
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+//ruta para el registro desde el administrador
+
+app.post('/gestion_u', (req, res) => {
+  // Obtén los datos del cuerpo de la solicitud
+  const { documento_identidad, nombre_completo, correo_electronico, contrasena, fecha_nacimiento, sexo } = req.body;
+
+  // Conecta a la base de datos Oracle
+  oracledb.getConnection(dbConfig, (err, connection) => {
+      if (err) {
+          console.error('Error al conectar a la base de datos Oracle: ', err);
+          res.status(500).json({ success: false, message: 'Error en la conexión a la base de datos' });
+          return;
+      }
+
+      // Ejecuta una consulta SQL para insertar los datos en la tabla de usuarios
+      const sql = `
+          INSERT INTO usuarios (documento_identidad, nombre_completo, correo_electronico, contrasena, fecha_nacimiento, sexo)
+          VALUES (:1, :2, :3, :4, TO_DATE(:5, 'YYYY-MM-DD'), :6)
+      `;
+
+      connection.execute(
+          sql,
+          [documento_identidad, nombre_completo, correo_electronico, contrasena, fecha_nacimiento, sexo],
+          { autoCommit: true }, // Habilita el autocommit para confirmar la transacción automáticamente
+          (err, result) => {
+              if (err) {
+                  console.error('Error al insertar en la base de datos Oracle: ', err);
+                  res.status(500).json({ success: false, message: 'Error al registrar el usuario' });
+              } else {
+                  console.log('Registro exitoso');
+                  res.json({ success: true, message: 'Usuario registrado exitosamente' });
+              }
+
+              // Cierra la conexión a la base de datos
+              connection.close((err) => {
+                  if (err) {
+                      console.error('Error al cerrar la conexión a la base de datos: ', err);
+                  }
+              });
+          }
+      );
+  });
+});
+//--------------------------------------------------------------------------------------------------------------------
+//Mostrar todos los registros
+
+app.get('/getUsuarios', (req, res) => {
+  console.log('Recibida solicitud para /getUsuarios');
+
+  // Realiza una consulta SQL para obtener los usuarios
+  const sql = `
+    SELECT documento_identidad, nombre_completo, correo_electronico, contrasena, fecha_nacimiento, sexo, rol_id
+    FROM usuarios
+  `;
+
+  oracledb.getConnection(dbConfig, (err, connection) => {
+    if (err) {
+      console.error('Error al conectar a la base de datos Oracle: ', err);
+      res.status(500).send('Error al conectar a la base de datos');
+      return;
+    }
+
+    connection.execute(sql, [], (err, result) => {
+      if (err) {
+        console.error('Error al ejecutar la consulta: ', err);
+        res.status(500).send('Error al obtener la lista de usuarios');
+        return;
+      }
+
+      // Crear una tabla HTML a partir de los resultados
+      const htmlTable = `
+        <table>
+          <thead>
+            <tr>
+              <th>Documento de Identidad</th>
+              <th>Nombre Completo</th>
+              <th>Correo Electrónico</th>
+              <th>Contraseña</th>
+              <th>Fecha de Nacimiento</th>
+              <th>Sexo</th>
+              <th>Id_rol</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${result.rows.map(row => `
+              <tr>
+                <td>${row[0]}</td>
+                <td>${row[1]}</td>
+                <td>${row[2]}</td>
+                <td>${row[3]}</td>
+                <td>${row[4]}</td>
+                <td>${row[5]}</td>
+                <td>${row[6]}</td>
+                <td>
+                  <button class="btn btn-editar" onclick="editarUsuario(${row[0]})">Editar</button>
+                  <button class="btn btn-primary" onclick="abrirAsignarRolForm('${row[0]}')">Asignar Rol</button>
+                  <button class="btn btn-danger" onclick="abrirEliminarUsuarioForm(${row[0]})">Eliminar</button>
+                  
+                </td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      `;
+
+      res.send(htmlTable);
+      
+      connection.close((err) => {
+        if (err) {
+          console.error('Error al cerrar la conexión a la base de datos: ', err);
+        }
+      });
+    });
+  });
+});
+
+//--------------------------------------------------------------------------------------------------------------------
+
+// GUARDAR EVENTO
+
+app.post('/guardarEvento', (req, res) => {
+  const { titulo, descripcion, fecha, hora, lugar } = req.body;
+
+  // Conecta a la base de datos
+  oracledb.getConnection(dbConfig, (err, connection) => {
+    if (err) {
+      console.error('Error al conectar a la base de datos Oracle: ', err);
+      res.status(500).send('Error al conectar a la base de datos');
+      return;
+    }
+
+    // Ejecuta una consulta SQL para insertar los datos en la tabla eventos
+    const sql = `
+      INSERT INTO eventos (titulo, descripcion, fecha, hora, lugar) 
+      VALUES (:titulo, :descripcion, TO_DATE(:fecha, 'YYYY-MM-DD'), :hora, :lugar)
+    `;
+
+    connection.execute(
+      sql,
+      {
+        titulo: titulo,
+        descripcion: descripcion,
+        fecha: fecha,
+        hora: hora,
+        lugar: lugar
+      },
+      { autoCommit: true },
+      (err, result) => {
+        if (err) {
+          console.error('Error al insertar en la base de datos Oracle: ', err);
+          res.status(500).send('Error al guardar el evento');
+        } else {
+          console.log('Evento guardado exitosamente');
+          res.json({ status: "success", message: "Evento guardado exitosamente" });
+        }
+
+        // Cierra la conexión a la base de datos
+        connection.close((err) => {
+          if (err) {
+            console.error('Error al cerrar la conexión a la base de datos: ', err);
+          }
+        });
+      }
+    );
+  });
+});
+
+
+//---------------------------------------------------------------------------------------------------------
+app.get('/getListaUsuarios', (req, res) => {
+  // Realiza una consulta SQL para obtener la lista de usuarios (documento_identidad y nombre_completo).
+  const sql = 'SELECT documento_identidad, nombre_completo FROM usuarios';
+
+
+  // Realiza la consulta a la base de datos y devuelve los resultados como JSON.
+  oracledb.getConnection(dbConfig, (err, connection) => {
+      if (err) {
+          console.error('Error al conectar a la base de datos Oracle: ', err);
+          res.status(500).send('Error al conectar a la base de datos');
+          return;
+      }
+
+      connection.execute(sql, [], (err, result) => {
+          if (err) {
+              console.error('Error al ejecutar la consulta: ', err);
+              res.status(500).send('Error al obtener la lista de usuarios');
+              return;
+          }
+
+          // Enviar los resultados como JSON al cliente
+          res.json(result.rows);
+          connection.close((err) => {
+              if (err) {
+                  console.error('Error al cerrar la conexión a la base de datos: ', err);
+              }
+          });
+      });
+  });
+})
+
+
+
+//-------------------------------------------------------------------------------------------------------------------
+//MOSTRAR USUARIOS PAERA ELIMINAR
+
+app.get('/getListaUsuariosEliminar', (req, res) => {
+  // Realiza una consulta SQL para obtener la lista de usuarios (documento_identidad y nombre_completo).
+  const sql = 'SELECT documento_identidad, nombre_completo FROM usuarios';
+
+  // Realiza la consulta a la base de datos y devuelve los resultados como JSON.
+  oracledb.getConnection(dbConfig, (err, connection) => {
+      if (err) {
+          console.error('Error al conectar a la base de datos Oracle: ', err);
+          res.status(500).send('Error al conectar a la base de datos');
+          return;
+      }
+
+      connection.execute(sql, [], (err, result) => {
+          if (err) {
+              console.error('Error al ejecutar la consulta: ', err);
+              res.status(500).send('Error al obtener la lista de usuarios');
+              return;
+          }
+
+          // Enviar los resultados como JSON al cliente
+          res.json(result.rows);
+
+          connection.close((err) => {
+              if (err) {
+                  console.error('Error al cerrar la conexión a la base de datos: ', err);
+              }
+          });
+      });
+  });
+});
+
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+app.get('/getUsuarios', (req, res) => {
+  // Realiza una consulta SQL para obtener la lista de usuarios con los campos nombre_completo y documento_identidad.
+  const sql = 'SELECT documento_identidad, nombre_completo FROM usuarios';
+
+  oracledb.getConnection(dbConfig, (err, connection) => {
+    if (err) {
+      console.error('Error al conectar a la base de datos Oracle: ', err);
+      res.status(500).json({ error: 'Error al conectar a la base de datos' });
+      return;
+    }
+
+    connection.execute(sql, [], (err, result) => {
+      if (err) {
+        console.error('Error al ejecutar la consulta: ', err);
+        res.status(500).json({ error: 'Error al obtener la lista de usuarios' });
+        return;
+      }
+
+      const usuarios = result.rows.map(row => ({
+        documento_identidad: row[0],
+        nombre_completo: row[1]
+      }));
+
+      // Enviar la respuesta como JSON
+      res.json({ usuarios });
+
+      connection.close((err) => {
+        if (err) {
+          console.error('Error al cerrar la conexión a la base de datos: ', err);
+        }
+      });
+    });
+  });
+});
+
+
+
+
+
+
+
+
+//-------------------------------------------------------------------------------------------------------------------
+
+
+// Inicia el servidor
+app.listen(port, () => {
+  console.log(`Servidor Node.js escuchando en el puerto ${port}`);
+});
+
+
+
+------------------------------------------
+-----------------------------------------------------------
+-----------------------------------------------------------------------------------
+
+
+<label for="confirmEmail">Confirmar Correo Electrónico:</label>
+      <input type="email" id="confirmEmail" placeholder="Confirma tu correo electrónico">
+      
+
+
+drop table usuarios_roles;
+
+CREATE TABLE usuarios_roles (
+    usuario_id VARCHAR2(20) REFERENCES usuarios(documento_identidad),
+    rol_id NUMBER REFERENCES roles(rol_id),
+    PRIMARY KEY (usuario_id, rol_id)
+);
+
+
+SELECT * FROM usuarios_roles;
+-------------------------------------------------------------------
+
+// Ruta para procesar el formulario de registro
+app.post('/registro', (req, res) => {
+  const {nombre_completo, correo_electronico, contrasena, fecha_nacimiento, sexo, documento_identidad, id_rol} = req.body;
+
+  console.log('Fecha de nacimiento recibida:', fecha_nacimiento);
+
+  // Conecta a la base de datos
+  oracledb.getConnection(dbConfig, (err, connection) => {
+    if (err) {
+      console.error('Error al conectar a la base de datos Oracle: ', err);
+      res.status(500).send('Error al conectar a la base de datos');
+      return;
+    }
+
+    // Ejecuta una consulta SQL para insertar los datos en la tabla
+    const sql = `INSERT INTO usuarios (nombre_completo, correo_electronico, contrasena, fecha_nacimiento, sexo, documento_identidad, id_rol) VALUES (:1, :2, :3, TO_DATE(:4, 'YYYY-MM-DD'), :5, :6, :7)`;
+
+    connection.execute(
+      sql,
+      [nombre_completo, correo_electronico, contrasena, fecha_nacimiento, sexo, documento_identidad, id_rol],
+      { autoCommit: true }, // Habilita el autocommit para confirmar la transacción automáticamente
+      (err, result) => {
+        if (err) {
+          console.error('Error al insertar en la base de datos Oracle: ', err);
+          res.status(500).send('Error al registrar el usuario');
+        } else {
+          console.log('Registro exitoso');
+          res.send('Registro exitoso');
+        }
+
+        
+
+        // Cierra la conexión a la base de datos
+        connection.close((err) => {
+          if (err) {
+            console.error('Error al cerrar la conexión a la base de datos: ', err);
+          }
+        });
+      }
+    );
+  });
+});
+
+
+
+
+-----------------------------------------------------------------------------
+//Mostrar la lista de roles disponibles de la tabla roles
+
+app.get('/getListaRoles', (req, res) => {
+  // Realiza una consulta SQL para obtener la lista de roles (id_rol y nombre_rol).
+  const sql = 'SELECT id_rol, nombre_rol FROM roles';
+
+  // Realiza la consulta a la base de datos y devuelve los resultados como JSON.
+  oracledb.getConnection(dbConfig, (err, connection) => {
+      if (err) {
+          console.error('Error al conectar a la base de datos Oracle: ', err);
+          res.status(500).send('Error al conectar a la base de datos');
+          return;
+      }
+
+      connection.execute(sql, [], (err, result) => {
+          if (err) {
+              console.error('Error al ejecutar la consulta: ', err);
+              res.status(500).send('Error al obtener la lista de roles');
+              return;
+          }
+
+          // Enviar los resultados como JSON al cliente
+          res.json(result.rows);
+
+          connection.close((err) => {
+              if (err) {
+                  console.error('Error al cerrar la conexión a la base de datos: ', err);
+              }
+          });
+      });
+  });
+});
+
+
+1002114857
+
+Alejandra Alvarez Zuluaga
+alejandra_alvarez23222@elpoli.edu.co
+
+
+
+tablas
+
+
+
+Tabla de Usuarios (usuarios):
+
+documento_identidad (PK) : El documento de identidad del usuario.
+nombre_completo : El nombre completo del usuario.
+correo_electronico : El correo electrónico del usuario.
+contrasena : La contraseña del usuario.
+fecha_nacimiento : La fecha de nacimiento del usuario.
+sexo : El género del usuario.
+id_rol (FK) : Una referencia al rol del usuario (explicado más abajo).
+
+Tabla de Roles (roles):
+
+id_rol (PK) : El ID del rol.
+nombre_rol : El nombre del rol (puede ser "admi-desarrollador", "admi-lideres", "integrantes", etc.).
+
+Tabla de Eventos (eventos):
+
+id_evento (PK) : El ID del evento.
+titulo : El título del evento.
+descripcion : La descripción del evento.
+fecha : La fecha del evento.
+hora : La hora del evento.
+lugar : El lugar del evento.
+
+
+Tabla de Inscripciones a Eventos (inscripciones):
+
+id_inscripcion (PK) : El ID de la inscripción.
+id_evento (FK) : Una referencia al evento al que se inscribe el usuario.
+documento_identidad (FK) : Una referencia al usuario que se inscribe en el evento. osea documento de la tabla usuarios
+
+Tabla de Documentación Histórica (documentos):
+
+id_documento (PK) : El ID del documento histórico.
+titulo_documento : El título del documento histórico.
+descripcion_documento : La descripción del documento histórico.
+fecha_documento : La fecha del documento.
+
+
+
+

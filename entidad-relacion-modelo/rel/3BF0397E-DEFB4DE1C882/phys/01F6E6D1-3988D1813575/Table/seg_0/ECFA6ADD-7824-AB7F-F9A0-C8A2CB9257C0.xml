@@ -1,0 +1,62 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev20c class="oracle.dbtools.crest.model.design.storage.oracle.v20c.TableProxyOraclev20c" name="SOLICITUDES_CAMBIO_ROL" directorySegmentName="seg_0" id="ECFA6ADD-7824-AB7F-F9A0-C8A2CB9257C0">
+<createdBy>samue</createdBy>
+<createdTime>2023-11-10 00:23:13 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+<schemaObject>2E19BE5D-C621-F6D5-CA83-C24DC26FFCD6</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>B9A15B59-9CF4-B99A-AC34-495220F6CB62</segment>
+<tableSpace>C867269A-6FAC-988C-7E3D-0AC5F77A5D97</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="ID_ROL_SOLICITADO" id="3BB5CA0F-2F06-51A5-A207-A5F810A9B242">
+<createdBy>samue</createdBy>
+<createdTime>2023-11-10 00:23:13 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ID_USUARIO" id="5D64AAA2-D5E7-E055-B072-D997642680E0">
+<createdBy>samue</createdBy>
+<createdTime>2023-11-10 00:23:13 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ESTADO" id="AB994B12-7E7F-FF02-3A2D-16560FFB3248">
+<createdBy>samue</createdBy>
+<createdTime>2023-11-10 00:23:13 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ID_SOLICITUD" id="DFF29EC9-4BEF-78A9-B4F7-ED0483177684">
+<createdBy>samue</createdBy>
+<createdTime>2023-11-10 00:23:13 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="SYS_C008577" id="52AA3A28-52D2-B8C1-C50D-325805C12C90">
+<createdBy>samue</createdBy>
+<createdTime>2023-11-10 00:23:14 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="SYS_C008576" id="BA95429B-DC92-F2D1-967E-328D1C418A80">
+<createdBy>samue</createdBy>
+<createdTime>2023-11-10 00:23:14 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="SOLICITUDES_CAMBIO_ROL_PK" id="B7051FFE-BE30-F6BF-0B97-82BEF9C27F9D">
+<createdBy>samue</createdBy>
+<createdTime>2023-11-10 00:23:14 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+<schemaObject>2E19BE5D-C621-F6D5-CA83-C24DC26FFCD6</schemaObject>
+<segment>D8039DE0-2C52-FC01-E057-4C3860866762</segment>
+<tableSpace>C867269A-6FAC-988C-7E3D-0AC5F77A5D97</tableSpace>
+<indexSegment>D8039DE0-2C52-FC01-E057-4C3860866762</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev20c>

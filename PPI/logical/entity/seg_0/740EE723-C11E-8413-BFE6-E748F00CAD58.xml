@@ -1,0 +1,59 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="740EE723-C11E-8413-BFE6-E748F00CAD58" name="OCUPACIONES">
+<createdBy>sossa</createdBy>
+<createdTime>2023-09-21 16:53:16 UTC</createdTime>
+<ownerDesignName>PPI</ownerDesignName>
+<engineerTo>
+<item key="30239899-291B-EBA6-D0F4-BD00200E4978" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="OCUPACION" id="18186EAD-A315-C28D-869C-CE580311519B">
+<createdBy>sossa</createdBy>
+<createdTime>2023-09-21 16:53:28 UTC</createdTime>
+<ownerDesignName>PPI</ownerDesignName>
+<engineerTo>
+<item key="30239899-291B-EBA6-D0F4-BD00200E4978" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="NOMBRE_OCUPACION" id="9AD26DE0-CBFE-1AC3-6B96-BF408CEE9D32">
+<createdBy>sossa</createdBy>
+<createdTime>2023-09-21 16:55:23 UTC</createdTime>
+<ownerDesignName>PPI</ownerDesignName>
+<engineerTo>
+<item key="30239899-291B-EBA6-D0F4-BD00200E4978" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="5ECE8F4C-DEDF-931F-3DA5-E61558769BF6" name="OCUPACIONES PK">
+<createdBy>sossa</createdBy>
+<createdTime>2023-09-21 16:54:45 UTC</createdTime>
+<ownerDesignName>PPI</ownerDesignName>
+<engineerTo>
+<item key="30239899-291B-EBA6-D0F4-BD00200E4978" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>18186EAD-A315-C28D-869C-CE580311519B</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

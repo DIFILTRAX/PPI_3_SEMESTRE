@@ -1,0 +1,8 @@
+        dueño    grupo    usuario.g
+datos1 --w-      r--       -x-
+datos2 ---      rw-       r-x
+datos3 -r--    -w-        --x 
+
+cat   -rwx    rwx        rwx
+less -rwx    rwx        rwx
+nl   -rwx    rwx             

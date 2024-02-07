@@ -1,0 +1,60 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev20c class="oracle.dbtools.crest.model.design.storage.oracle.v20c.TableProxyOraclev20c" name="DOCUMENTACION_HISTORICA" directorySegmentName="seg_0" id="202ED21F-2CA9-788A-460D-3F4F3BDC2487">
+<createdBy>samue</createdBy>
+<createdTime>2023-11-10 00:23:13 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+<schemaObject>2E19BE5D-C621-F6D5-CA83-C24DC26FFCD6</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>EEF0D0C7-4A24-387B-4891-1C8AE17B0D6D</segment>
+<tableSpace>C867269A-6FAC-988C-7E3D-0AC5F77A5D97</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="DOC_ID" id="460B121D-5F54-37DB-EB4A-9BB2ECDB9587">
+<createdBy>samue</createdBy>
+<createdTime>2023-11-10 00:23:13 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="CONTENIDO" id="CA42CD0D-8530-F399-4607-70B4FD50240E">
+<createdBy>samue</createdBy>
+<createdTime>2023-11-10 00:23:13 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ANIO" id="E96E32D4-ADCE-0F12-703D-6E61DC2DE4D6">
+<createdBy>samue</createdBy>
+<createdTime>2023-11-10 00:23:13 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<lobStorages>
+<LobStorage class="oracle.dbtools.crest.model.design.storage.oracle.v11g.LobStorageOraclev11g" name="SYS_LOB0000080252C00003$$" id="2C4C3B8C-8F22-A8D3-16F3-FAF0CFBADE94">
+<createdBy>samue</createdBy>
+<createdTime>2023-11-10 00:23:14 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+<cache>NOCACHE</cache>
+<chunk>8192</chunk>
+<column>CONTENIDO</column>
+<compression>NO</compression>
+<duplication>KEEP_DUPLICATES</duplication>
+<logging>YES</logging>
+<tableSpace>C867269A-6FAC-988C-7E3D-0AC5F77A5D97</tableSpace>
+<lobStorageType>SECUREFILE</lobStorageType>
+</LobStorage>
+</lobStorages>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="DOCUMENTACION_HISTORICA_PK" id="C1318BD4-050F-6868-84E1-FF631B7EC09B">
+<createdBy>samue</createdBy>
+<createdTime>2023-11-10 00:23:14 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+<schemaObject>2E19BE5D-C621-F6D5-CA83-C24DC26FFCD6</schemaObject>
+<segment>C29BEEFA-72A0-B119-6523-77F7EB377ECF</segment>
+<tableSpace>C867269A-6FAC-988C-7E3D-0AC5F77A5D97</tableSpace>
+<indexSegment>C29BEEFA-72A0-B119-6523-77F7EB377ECF</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev20c>

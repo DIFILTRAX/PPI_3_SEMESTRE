@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "nodemon": "^3.0.1",
+    "oracledb": "^6.1.0",
+    "path": "^0.12.7"
+  },
+  "name": "proyectito",
+  "version": "1.0.0",
+  "description": "ppi",
+  "main": "script.js",
+  "scripts": {
+    "start": "node jc.js",
+    "dev": "nodemon jc.js"
+  }
+}

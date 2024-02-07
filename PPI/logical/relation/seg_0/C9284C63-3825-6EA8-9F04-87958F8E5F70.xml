@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="CARRERAS" directorySegmentName="seg_0" id="C9284C63-3825-6EA8-9F04-87958F8E5F70">
+<createdBy>sossa</createdBy>
+<createdTime>2023-09-21 19:09:13 UTC</createdTime>
+<ownerDesignName>PPI</ownerDesignName>
+<engineerTo>
+<item key="30239899-291B-EBA6-D0F4-BD00200E4978" value="true"/>
+</engineerTo>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>31FB08F4-CFE2-9DA1-4DFB-A9527CC4F8CA</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>A23F9769-DAFF-0F2A-6839-4C615F358051</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

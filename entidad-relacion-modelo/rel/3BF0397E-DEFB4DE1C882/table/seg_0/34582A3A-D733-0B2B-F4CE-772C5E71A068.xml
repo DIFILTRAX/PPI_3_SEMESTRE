@@ -1,0 +1,156 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="34582A3A-D733-0B2B-F4CE-772C5E71A068" schemaObject="2E19BE5D-C621-F6D5-CA83-C24DC26FFCD6" name="USUARIOS">
+<sourceConnName>semillero</sourceConnName>
+<sourceObjSchema>C##ADMI1</sourceObjSchema>
+<sourceObjName>USUARIOS</sourceObjName>
+<createdBy>samue</createdBy>
+<createdTime>2023-11-10 00:23:13 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="DOCUMENTO_IDENTIDAD" id="954C2264-3BA1-7F40-D72C-387C1E70AAE9">
+<sourceConnName>semillero</sourceConnName>
+<sourceObjSchema>USUARIOS</sourceObjSchema>
+<sourceObjName>DOCUMENTO_IDENTIDAD</sourceObjName>
+<createdBy>samue</createdBy>
+<createdTime>2023-11-10 00:23:13 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 BYTE</dataTypeSize>
+<ownDataTypeParameters>20 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NOMBRE_COMPLETO" id="347C8ACA-6AED-EADE-6F2D-E9F04459A098">
+<sourceConnName>semillero</sourceConnName>
+<sourceObjSchema>USUARIOS</sourceObjSchema>
+<sourceObjName>NOMBRE_COMPLETO</sourceObjName>
+<createdBy>samue</createdBy>
+<createdTime>2023-11-10 00:23:13 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 BYTE</dataTypeSize>
+<ownDataTypeParameters>255 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CORREO_ELECTRONICO" id="770FC925-A89A-DEDA-D467-13DB1D1CBD49">
+<sourceConnName>semillero</sourceConnName>
+<sourceObjSchema>USUARIOS</sourceObjSchema>
+<sourceObjName>CORREO_ELECTRONICO</sourceObjName>
+<createdBy>samue</createdBy>
+<createdTime>2023-11-10 00:23:13 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 BYTE</dataTypeSize>
+<ownDataTypeParameters>255 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CONTRASENA" id="E9463222-34C4-04E3-7BBE-DE0F26AD6F50">
+<sourceConnName>semillero</sourceConnName>
+<sourceObjSchema>USUARIOS</sourceObjSchema>
+<sourceObjName>CONTRASENA</sourceObjName>
+<createdBy>samue</createdBy>
+<createdTime>2023-11-10 00:23:13 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 BYTE</dataTypeSize>
+<ownDataTypeParameters>255 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FECHA_NACIMIENTO" id="028A7A9D-5A94-C5EA-00DB-7E543D32886D">
+<sourceConnName>semillero</sourceConnName>
+<sourceObjSchema>USUARIOS</sourceObjSchema>
+<sourceObjName>FECHA_NACIMIENTO</sourceObjName>
+<createdBy>samue</createdBy>
+<createdTime>2023-11-10 00:23:13 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="SEXO" id="164364BF-61D7-6C38-C38A-89A36477D1A6">
+<sourceConnName>semillero</sourceConnName>
+<sourceObjSchema>USUARIOS</sourceObjSchema>
+<sourceObjName>SEXO</sourceObjName>
+<createdBy>samue</createdBy>
+<createdTime>2023-11-10 00:23:13 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 BYTE</dataTypeSize>
+<ownDataTypeParameters>20 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ID_ROL" id="A3BC13AF-457F-A6D5-0438-4F0030312702">
+<sourceConnName>semillero</sourceConnName>
+<sourceObjSchema>USUARIOS</sourceObjSchema>
+<sourceObjName>ID_ROL</sourceObjName>
+<createdBy>samue</createdBy>
+<createdTime>2023-11-10 00:23:13 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="96979668-F1E7-B35C-730B-15573AFB7F47" referredColumn="7963093F-4FCF-59F0-6EE6-B72D0E8C7CDE"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="CD8D0D62-09FD-C22A-556A-A39415C3D5D5" schemaObject="2E19BE5D-C621-F6D5-CA83-C24DC26FFCD6" name="USUARIOS_PK">
+<sourceConnName>semillero</sourceConnName>
+<sourceObjSchema>C##ADMI1</sourceObjSchema>
+<sourceObjName>SYS_C008570</sourceObjName>
+<createdBy>samue</createdBy>
+<createdTime>2023-11-10 00:23:13 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="954C2264-3BA1-7F40-D72C-387C1E70AAE9"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3B0BEEF2-598A-8294-FF96-2269F36F0253" schemaObject="2E19BE5D-C621-F6D5-CA83-C24DC26FFCD6" name="USUARIOS_CORREO_ELECTRONICO_UN">
+<sourceConnName>semillero</sourceConnName>
+<sourceObjSchema>C##ADMI1</sourceObjSchema>
+<sourceObjName>SYS_C008571</sourceObjName>
+<createdBy>samue</createdBy>
+<createdTime>2023-11-10 00:23:13 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="770FC925-A89A-DEDA-D467-13DB1D1CBD49"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B7BA726C-096F-1CE1-42C2-CFB45AFC9C49" name="FK_ROL">
+<createdBy>samue</createdBy>
+<createdTime>2023-11-10 00:23:14 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A3BC13AF-457F-A6D5-0438-4F0030312702"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

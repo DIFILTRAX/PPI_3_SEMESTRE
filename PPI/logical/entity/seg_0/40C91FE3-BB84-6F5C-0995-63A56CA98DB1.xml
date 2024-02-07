@@ -1,0 +1,73 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="40C91FE3-BB84-6F5C-0995-63A56CA98DB1" name="SEXO">
+<createdBy>sossa</createdBy>
+<createdTime>2023-09-21 16:19:10 UTC</createdTime>
+<ownerDesignName>PPI</ownerDesignName>
+<engineerTo>
+<item key="30239899-291B-EBA6-D0F4-BD00200E4978" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="ID_SEXO" id="6CFFAC11-F062-F017-0328-F9B787836AD5">
+<createdBy>sossa</createdBy>
+<createdTime>2023-09-21 16:19:29 UTC</createdTime>
+<ownerDesignName>PPI</ownerDesignName>
+<engineerTo>
+<item key="30239899-291B-EBA6-D0F4-BD00200E4978" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>1</dataTypePrecision>
+<ownDataTypeParameters>,1,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="NOMBRE_SEXO" id="618237D7-C556-EE29-EE0D-76E035B0E08A">
+<createdBy>sossa</createdBy>
+<createdTime>2023-09-21 16:20:54 UTC</createdTime>
+<ownerDesignName>PPI</ownerDesignName>
+<engineerTo>
+<item key="30239899-291B-EBA6-D0F4-BD00200E4978" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>15</dataTypeSize>
+<ownDataTypeParameters>15,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="NOMBRE_GENERO" id="96A62079-AF83-402A-7186-07E5FB29836C">
+<createdBy>sossa</createdBy>
+<createdTime>2023-09-21 16:21:44 UTC</createdTime>
+<ownerDesignName>PPI</ownerDesignName>
+<engineerTo>
+<item key="30239899-291B-EBA6-D0F4-BD00200E4978" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="AF5AF93C-90A0-D6BD-D7B4-2A0E437FBB9E" name="SEXO PK">
+<createdBy>sossa</createdBy>
+<createdTime>2023-09-21 16:21:39 UTC</createdTime>
+<ownerDesignName>PPI</ownerDesignName>
+<engineerTo>
+<item key="30239899-291B-EBA6-D0F4-BD00200E4978" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>6CFFAC11-F062-F017-0328-F9B787836AD5</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

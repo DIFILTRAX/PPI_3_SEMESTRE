@@ -1,0 +1,201 @@
+DROP TABLE usuarios;
+
+CREATE TABLE usuarios (
+    documento_identidad VARCHAR2(20) PRIMARY KEY,
+    nombre_completo VARCHAR2(255) NOT NULL,
+    correo_electronico VARCHAR2(255) NOT NULL UNIQUE,
+    contrasena VARCHAR2(255) NOT NULL,
+    fecha_nacimiento DATE,
+    sexo VARCHAR2(20),
+    id_rol NUMBER
+    
+);
+
+
+describe usuarios;
+
+SELECT * FROM usuarios;
+
+ALTER TABLE usuarios
+ADD CONSTRAINT fk_rol
+FOREIGN KEY (id_rol)
+REFERENCES roles (id_rol);
+
+
+
+
+
+
+
+
+
+
+
+
+
+------------------------------------------------
+drop table roles;
+
+CREATE TABLE roles (
+   id_rol NUMBER,
+   nombre_rol VARCHAR2(50),
+   PRIMARY KEY (id_rol)
+);
+
+SELECT * FROM roles;
+
+INSERT INTO roles (id_rol, nombre_rol) VALUES (1, 'admi-desarrollador');
+INSERT INTO roles (id_rol, nombre_rol) VALUES (2, 'admi-lideres');
+INSERT INTO roles (id_rol, nombre_rol) VALUES (3, 'integrante');
+
+
+
+describe roles;
+----------------------------------------------------
+DROP TABLE solicitudes_cambio_rol;
+
+CREATE TABLE solicitudes_cambio_rol (
+    id_solicitud NUMBER PRIMARY KEY,
+    id_usuario VARCHAR2(20) NOT NULL,
+    id_rol_solicitado NUMBER NOT NULL,
+    estado VARCHAR2(20) NOT NULL,
+    FOREIGN KEY (id_usuario) REFERENCES usuarios (documento_identidad),
+    FOREIGN KEY (id_rol_solicitado) REFERENCES roles (id_rol)
+);
+
+SELECT * FROM solicitudes_cambio_rol;
+
+
+
+
+
+CREATE SEQUENCE solicitud_seq
+  START WITH 1
+  INCREMENT BY 1
+  NOCACHE
+  NOCYCLE;
+  
+  CREATE OR REPLACE TRIGGER tr_solicitud_bir
+BEFORE INSERT ON solicitudes_cambio_rol
+FOR EACH ROW
+BEGIN
+  SELECT solicitud_seq.NEXTVAL INTO :NEW.id_solicitud FROM dual;
+END;
+/
+
+
+
+----------------------------------------------------------------------
+drop table eventos;
+
+CREATE TABLE eventos (
+    evento_id NUMBER,
+    titulo VARCHAR2(255) NOT NULL,
+    descripcion VARCHAR2(4000),
+    fecha DATE NOT NULL,
+    hora VARCHAR2(40),
+    lugar VARCHAR2(255),
+    PRIMARY KEY (evento_id)
+);
+
+SELECT * FROM eventos;
+
+
+
+-- Crea una secuencia para generar valores únicos
+CREATE SEQUENCE eventos_seq
+    START WITH 1
+    INCREMENT BY 1;
+
+-- Crea un disparador (trigger) para asignar valores de secuencia automáticamente
+CREATE OR REPLACE TRIGGER eventos_trigger
+BEFORE INSERT ON eventos
+FOR EACH ROW
+BEGIN
+    SELECT eventos_seq.nextval INTO :new.evento_id FROM dual;
+END;
+/
+---------------------------------------------------------------------
+DROP TABLE inscripciones;
+
+-- Tabla de Inscripciones
+CREATE TABLE inscripciones (
+    id_inscripcion NUMBER PRIMARY KEY,
+    evento_id NUMBER,
+    documento_identidad VARCHAR2(20),
+    FOREIGN KEY (evento_id) REFERENCES eventos (evento_id),
+    FOREIGN KEY (documento_identidad) REFERENCES usuarios (documento_identidad)
+);
+
+SELECT * FROM inscripciones;
+
+
+
+
+-- Crea una secuencia para generar valores únicos
+CREATE SEQUENCE inscripciones_seq
+    START WITH 1
+    INCREMENT BY 1;
+
+-- Crea un disparador (trigger) para asignar valores de secuencia automáticamente
+CREATE OR REPLACE TRIGGER inscripciones_trigger
+BEFORE INSERT ON inscripciones
+FOR EACH ROW
+BEGIN
+    SELECT inscripciones_seq.nextval INTO :new.id_inscripcion FROM dual;
+END;
+/
+
+
+--------------------------------------------------------------------------
+drop table documentacion_historica; 
+-- Crea una secuencia para generar valores únicos para doc_id
+CREATE SEQUENCE doc_id_seq
+   START WITH 1
+   INCREMENT BY 1;
+
+
+CREATE TABLE documentacion_historica (
+    doc_id NUMBER,
+    anio NUMBER,
+    contenido CLOB,
+    PRIMARY KEY (doc_id)
+);
+
+-- Crea un disparador (trigger) para asignar valores de secuencia automáticamente
+CREATE OR REPLACE TRIGGER doc_id_trigger
+BEFORE INSERT ON documentacion_historica
+FOR EACH ROW
+BEGIN
+   SELECT doc_id_seq.nextval INTO :new.doc_id FROM dual;
+END;
+/
+
+------------------------------------------------------------------
+
+--TABLAS FUERTES Y TABLAS DEBILES
+
+---------------------------TABLAS FUERTES:
+
+--USUARIOS
+--ROLES
+--EVENTOS
+--DOCUMENTACION_HISTORICA
+
+---------------------------TABLAS DEBILES
+
+--Solicitudes_cambio_rol
+--Inscripciones
+
+
+
+
+
+
+
+
+
+
+
+SHOW USER;
+

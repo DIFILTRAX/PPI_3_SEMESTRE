@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<LogicalDesign class="oracle.dbtools.crest.model.design.logical.LogicalDesign" name="Logical" id="A00175B6-144B-8275-63DC-C4D488BFED12" mainViewID="05BCC1F1-50AD-2321-5802-7F94BEAAE332">
+<createdBy>samue</createdBy>
+<createdTime>2023-11-09 16:11:06 UTC</createdTime>
+<ownerDesignName>entidad-relacion-modelo</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</LogicalDesign>

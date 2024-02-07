@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BusinessInfoDesign class="oracle.dbtools.crest.model.businessinfo.BusinessInfoDesign" name="Business Information" id="7C0F8487-A367-EAB9-0DBB-41E1F2D290F6">
+<createdBy>sossa</createdBy>
+<createdTime>2023-09-15 16:41:06 UTC</createdTime>
+<ownerDesignName>PPI</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</BusinessInfoDesign>

@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="PPI" id="047926C2-8080-72C5-7A74-6ED9284BF12C" version="3.5">
+<createdBy>sossa</createdBy>
+<createdTime>2023-09-15 16:41:05 UTC</createdTime>
+<ownerDesignName>PPI</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>047926C2-8080-72C5-7A74-6ED9284BF12C</designId>
+</OSDM_Design>
