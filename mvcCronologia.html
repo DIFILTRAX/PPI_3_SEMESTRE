@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Cronología del Semillero</title>
+    <link rel="stylesheet" href="/css/estilos.css"> <!-- Asumiendo que tienes un archivo de estilos -->
+</head>
+<body>
+    <h1>Cronología del Semillero</h1>
+    <div id="eventos">
+        <% eventos.forEach(function(evento) { %>
+            <div class="evento">
+                <h2><%= evento.fecha %>: <%= evento.nombre %></h2>
+                <p><%= evento.descripcion %></p>
+            </div>
+        <% }); %>
+    </div>
+</body>
+</html>
