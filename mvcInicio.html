@@ -1,0 +1,131 @@
+[server.js (El Servidor y Enrutador Principal)]
+// Importa las dependencias necesarias
+const express = require('express');
+const bodyParser = require('body-parser');
+// Importa el controlador de autenticación
+const authController = require('./controllers/authController');
+
+// Inicializa la aplicación express
+const app = express();
+// Define el puerto en el que se ejecutará el servidor
+const port = 3000;
+
+// Establece EJS como el motor de plantillas
+app.set('view engine', 'ejs');
+// Middleware para analizar cuerpos de petición urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+// Servir archivos estáticos desde la carpeta public
+app.use(express.static('public'));
+
+// Ruta GET para la página de inicio de sesión
+app.get('/login', (req, res) => {
+  // Renderiza la vista login.ejs
+  res.render('login');
+});
+
+// Ruta POST para manejar el inicio de sesión
+app.post('/inicio', authController.login);
+
+// Inicia el servidor
+app.listen(port, () => {
+  console.log(`Servidor escuchando en http://localhost:${port}`);
+});
+
+[controllers/authController.js (El Controlador)]
+// authController.js
+
+// Método para manejar el inicio de sesión
+exports.login = (req, res) => {
+  const { correo_electronico, contrasena } = req.body;
+  // Aquí iría la lógica para verificar las credenciales contra una base de datos
+  // Ejemplo de validación simple
+  if (correo_electronico === 'usuario@example.com' && contrasena === 'contraseña123') {
+    // Si las credenciales son válidas, redirige al usuario a la página principal
+    res.redirect('/principal');
+  } else {
+    // Si las credenciales son inválidas, devuelve un error 401
+    res.status(401).send('Credenciales no válidas');
+  }
+};
+
+[views/login.ejs (La Vista)]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Iniciar Sesión</title>
+    <link rel="stylesheet" type="text/css" href="/css/inicio.css">
+</head>
+<body>
+<div class="popup-container">
+    <div class="popup">
+        <h1>Iniciar Sesión</h1>
+        <form action="/inicio" method="POST">
+            <label for="email">Correo Electrónico:</label>
+            <input type="email" name="correo_electronico" id="email" placeholder="Ingresa tu correo electrónico" required>
+            <label for="contraseña">Contraseña:</label>
+            <input type="password" name="contrasena" id="contraseña" placeholder="Ingresa tu contraseña" required>
+            <button type="submit">Iniciar Sesión</button>
+        </form>
+        <button onclick="window.location.href='registro'">Registrarse</button>
+        <button onclick="window.location.href='index'">Regresar</button>
+        <a href="#" class="forgot-password">¿Olvidaste la contraseña?</a>
+    </div>
+</div>
+</body>
+</html>
+
+[public/css/inicio.css (CSS para la Vista)
+Este archivo contendrá los estilos para tu página de inicio de sesión. No has proporcionado el CSS, así que aquí hay un ejemplo básico para empezar:]
+/* inicio.css */
+body {
+    font-family: Arial, sans-serif;
+}
+
+.popup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.popup {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.forgot-password {
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+}
+
+[Cómo Funciona el MVC Aquí
+Modelo: En este ejemplo simplificado, no interactuamos directamente con una base de datos, pero el modelo sería responsable de manejar la lógica de negocio y acceso a datos, como verificar las credenciales de un usuario.
+Vista: Las vistas se manejan a través de archivos EJS, que permiten generar HTML dinámicamente. En este caso, login.ejs es la vista que presenta la interfaz de usuario para iniciar sesión.
+Controlador: authController.js actúa como el controlador, manejando la lógica de negocio en respuesta a las interacciones del usuario, como enviar el formulario de inicio de sesión.
+Este ejemplo proporciona una base sobre la cual puedes construir una aplicación más compleja, siguiendo los principios del patrón MVC para organizar el código de manera eficiente y mantenible.]
